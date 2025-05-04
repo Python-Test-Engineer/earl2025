@@ -1,6 +1,6 @@
 <!-- https://mconverter.eu/convert/markdown/html/ -->
 
-<img src="craig-west-intro-card.png" width="600px">
+<img src="./craig-west-intro-card.png" width="600px">
 
 The repo containing all the materials is here:
 
