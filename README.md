@@ -1,5 +1,6 @@
 # PyData Southampton
 
+<img src="./craig-west-pydata-southampton.png" width=700px>
 
 https://www.kaggle.com/datasets/joniarroba/noshowappointments/data
 
