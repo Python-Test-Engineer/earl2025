@@ -83,13 +83,6 @@ We have a local red fox that is apt to follow us...
 
 ...cut and paste was cut and paste!
 
-# Demo Django App
-
-We will look at a demo Django app that uses AI Agents to call LLMs. It is a chatbot style but could be a text field in a form that has Natural Language.
-
-I took information from the Conference website and used the code, ( a copy and paste), from `03_faq_ipynb` to provide a help chatbot...
-
-"what is a sprint and when does it take place - also I am not an expert coder does that matter?"
 
 # What are AI Agents?
 
@@ -166,6 +159,18 @@ The function might be a variation on the Agent we are using or it may be another
 
 The `function` might be a Python function or a class.
 
+## 3rd Party Agents and Tools
+
+[https://aiagentsdirectory.com/allstats](https://aiagentsdirectory.com/allstats) shows the number of growing Agents available as stand alone Agentic systems.
+
+However, two new protocols have emerged this year: Model Context Protocol, (MCP), and Agent 2 Agent, (A2A).
+
+If we think of our mobile phone, we have a number of apps installed. For a particular app, we can add 'extensions' to increase its capabilities. MCP is the protocol that enables discoverability and implementation of 3rd party TOOLS for our app, (Agent), to use.
+
+A2A is the protocol that enables discoverability and implementation of 3rd party AGENTS for our app, (Agent), to use.
+
+With this in mind, we can see a future where we will be using many 3rd party Tools and Agents as we might use APIs.
+
 Before we go into some code examples, we will refresh ourselves that a REST API a request is sending a payload of data to a server and then the server returns a response.
 
 This is a very simple example of a REST API.
@@ -221,53 +226,15 @@ The request is text and does not contain any objects or other data types.
 
 Likewise, we get a text response. We pass some text to a function and get some text back.
 
-We will look at `01_openai_api_with_requests.ipynb` to see an example of getting a response from the LLM.
-
-`01_openai_api_with_requests.ipynb`.
-
-In `02_api.ipynb`, we can see that we can get a joke from a regular API endpoint, with the assumption that there is no AI involved!
-
-We can also ask OpenAI to tell us a joke...
-
-What if we want a more complex API endpoint/route?
-
-Let's say we want to get a joke, get a rating as well as a verdict on whether it is worthy of publishing or whether a HUMAN should make the joke for publishing.
-
-We can do this by using a prompt.
-
-The prompt is the input to the AI agent.
-
-The prompt can be considered to be the API route we are creating and it it will be in Natural Language.
-
-Let's look at this file `02_api.ipynb`...
-
-We can see this in `02_api.ipynb` where we pass a system prompt and then a prompt to create this endpoint, specifying how we want the data returned.
-
-This is effectively a new route for the API, but instead of it being coded on the server side by someone, it is coded on the client side, sent with the payload AND the code is NATURAL LANGUAGE.
-
-In the early days of ChatGPT, *prompt engineering* was often shownd as hacks or tricks. Nowdays, it seems far more structured and different LLMs use different schemas.
-
 (Current models are 'Imperative' in that we say what they are, what they do, how they do it...New REASONING models are 'Declarative' in that we say what we want them to do - the goal - what we want as output and what we might not want. The model then 'reasons' its way through the task.)
 
 We can think of it as pseudo-code which we may write whilst developing an app.
 
-In fact, it is like a person starting a new job. They will get a handbook of what the job involves, how to do it etc. and this is what we are doing with the LLM. `sample_prompt.md` is an example of this and how we could import content from a Markdown file.
-
-We set the system prompt to guide the AI agent, and then the prompt to create the endpoint.
-
-We can have more information than necessary and this can do no harm provide it is consistent and logical with the remaining prompt. Obviously, there will be more token usage but with the price going down, it is not an issue.
-
-We have covered 2/3 of the AI reverse process - Client Side creation of the route and the use of Natural Language.
-
-What about Autonomy?
-
-In our output, we asked the LLM to give not just a rating but a verdict on whether it is worthy of publishing or not. This is the `next` parameter that is returned. This is our own creation and we can have any key name.
-
-There are many software design patterns but essentially the next step in the app has been selected by the LLM. It is the `if/else` statement. or router.
-
-In summary, this module has shown the 3 counter-intuitive steps of AI Agents - Autonomy, Client Side Creation of the route and the use of Natural Language.
+In fact, it is like a person starting a new job. They will get a handbook of what the job involves, how to do it etc. and this is what we are doing with the LLM. 
 
 ![ESSENCE](./101_ESSENCE.png)
+
+Let's go to the notebooks and see some code examples.
 
 # 4 main patterns
 
