@@ -5,11 +5,11 @@ import uuid
 import csv
 from typing import List, Dict, Any
 
-COLLECTION_NAME = "test_collection_02"
+COLLECTION_NAME = "test_collection_03"
 
 
 # Create a sample CSV file with 10 records
-def create_sample_csv(file_path: str = "chroma_loader_documents.csv"):
+def create_sample_csv(file_path: str = "03.3_chromadb_loader.csv"):
     """
     Create a sample CSV file with 10 records containing id, document, and metadata columns.
     The metadata column contains a JSON string representing metadata used by ChromaDB.
