@@ -6,7 +6,7 @@ It loads a CSV file, sends the data to Claude with cleaning instructions,
 processes the response, and saves the cleaned data.
 
 Usage:
-    python csv_cleaner_agent.py --input path/to/input.csv --output path/to/output.csv
+    python 30_cline_csv_cleaner_agent.py --input 30_dirty_sales_data_10.csv --output 30_results.csv
 
 Requirements:
     - anthropic
