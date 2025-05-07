@@ -5,7 +5,7 @@ import uuid
 import csv
 from typing import List, Dict, Any
 
-COLLECTION_NAME = "test_collection_03"
+COLLECTION_NAME = "test_collection_04"
 
 
 # Create a sample CSV file with 10 records
