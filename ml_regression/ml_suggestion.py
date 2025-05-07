@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+
+PROMPT USED: Suggest best ML approach and write me the code for it as ml_suggestion.py
 Film Revenue Prediction Model
 -----------------------------
 This script implements a comprehensive approach to predicting movie revenue
@@ -442,7 +444,6 @@ def main():
         print("\n" + "-" * 80)
         print("EXPECTED OUTPUT FROM MODEL ANALYSIS:")
 
-
         print("HOW TO USE THIS SCRIPT:")
         print("1. Replace 'film_dataset.csv' with your actual dataset path")
         print("2. Uncomment the workflow execution code below")
@@ -450,14 +451,15 @@ def main():
         print("-" * 80 + "\n")
 
         # Uncomment these lines when using a real dataset
-        
+
         predictor.load_and_prepare_data()
         predictor.perform_feature_engineering()
-        predictor.train_model(model_type='xgboost')  # Options: 'xgboost', 'lightgbm', 'gradient_boosting'
+        predictor.train_model(
+            model_type="xgboost"
+        )  # Options: 'xgboost', 'lightgbm', 'gradient_boosting'
         predictor.evaluate_model()
         predictor.analyze_feature_importance()
         predictor.provide_revenue_optimization_insights()
-        
 
     except Exception as e:
         print(f"An error occurred: {e}")
