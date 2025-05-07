@@ -9,21 +9,21 @@ console = Console()
 llm = init_chat_model("openai:gpt-4o-mini")
 
 
-url = "https://storage.googleapis.com/benchmarks-artifacts/chinook/Chinook.db"
+# url = "https://storage.googleapis.com/benchmarks-artifacts/chinook/Chinook.db"
 
-response = requests.get(url)
+# response = requests.get(url)
 
-if response.status_code == 200:
-    # Open a local file in binary write mode
-    with open("Chinook.db", "wb") as file:
-        # Write the content of the response (the file) to the local file
-        file.write(response.content)
-    print("File downloaded and saved as Chinook.db")
-else:
-    print(f"Failed to download the file. Status code: {response.status_code}")
+# if response.status_code == 200:
+#     # Open a local file in binary write mode
+#     with open("35.2_Chinook.db", "wb") as file:
+#         # Write the content of the response (the file) to the local file
+#         file.write(response.content)
+#     print("File downloaded and saved as Chinook.db")
+# else:
+#     print(f"Failed to download the file. Status code: {response.status_code}")
 
 
-db = SQLDatabase.from_uri("sqlite:///Chinook.db")
+db = SQLDatabase.from_uri("sqlite:///35.2_Chinook.db")
 
 print(f"Dialect: {db.dialect}")
 print(f"Available tables: {db.get_usable_table_names()}")
@@ -72,6 +72,8 @@ agent = create_react_agent(
 )
 
 question = "Which sales agent made the most in sales in 2009?"
+question = "What is the best selling album?"
+question = "How many genres are there ?"
 
 for step in agent.stream(
     {"messages": [{"role": "user", "content": question}]},
