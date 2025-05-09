@@ -1,25 +1,9 @@
-# Data Cleaning Analysis for Patient Appointment Data
-
-After examining the provided CSV data, here are the cleaning actions needed along with Python code to implement them:
-
-## Data Issues Identified:
-1. Format inconsistency in datetime columns (ScheduledDay and AppointmentDay)
-2. Column "Handcap" is likely misspelled (should be "Handicap")
-3. Column "No-show" has a hyphen, which can be problematic for processing
-4. Binary columns (Scholarship, Hipertension, Diabetes, Alcoholism, SMS_received) should be properly formatted as boolean or int
-5. Need to check for missing values
-6. Need to check for outliers in the Age column
-7. PatientId and AppointmentID formatting and potential duplicates
-
-## Python Code for Data Cleaning:
-
-```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Load the data
-df = pd.read_csv('DATA_FILE')
+df = pd.read_csv('25_medical_appointments.csv')
 
 # 1. Check basic information and missing values
 print("Data information:")
@@ -81,14 +65,3 @@ df['NoShow'].value_counts().plot(kind='pie', autopct='%1.1f%%', labels=['Attende
 plt.title('Appointment Attendance Distribution')
 plt.ylabel('')
 plt.savefig('noshow_distribution.png')
-```
-
-This code addresses the key cleaning tasks:
-- Handles datetime conversions
-- Fixes column naming issues
-- Creates a useful feature for time between scheduling and appointment
-- Standardizes binary columns
-- Checks for and reports outliers and duplicates
-- Provides basic visualization to understand the data distribution
-
-You can expand this code with more specific cleaning steps if additional issues are discovered during the initial analysis.

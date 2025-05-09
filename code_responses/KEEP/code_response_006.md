@@ -1,75 +1,73 @@
-# Data Analysis and Cleaning for Medical Appointment Dataset
+# Data Cleaning Analysis for Medical Appointment Dataset
 
-After analyzing the provided CSV data, which appears to be a dataset related to medical appointments, I'll identify the necessary cleaning actions and provide the corresponding Python code.
+After analyzing the given CSV data about medical appointments, here are the actions needed to clean the data and the Python code to implement them:
 
-## Analysis of the Data
+## Actions Needed:
 
-The dataset contains information about medical appointments, including patient details, appointment scheduling, medical conditions, and whether the patient showed up for the appointment.
+1. Check for missing values
+2. Convert date columns to datetime format
+3. Create a new feature for days between scheduled and appointment days
+4. Convert binary columns to proper boolean type
+5. Rename the "No-show" column to a more consistent format
+6. Check for duplicate records
+7. Handle outliers in the Age column
+8. Convert "Handcap" to "Handicap" (spelling correction)
+9. Ensure PatientID and AppointmentID are in proper format
 
-Key issues identified:
-1. Date fields need parsing
-2. Data types need correction
-3. Some fields may have inconsistent formatting
-4. Age value of 8 might need validation (or other age outliers)
-5. Encoded text fields (neighborhood names)
-6. Binary fields need consistent format
-
-## Cleaning Actions and Python Code
+## Python Code for Data Cleaning:
 
 ```python
 import pandas as pd
 import numpy as np
-from datetime import datetime
 
 # Load the data
 df = pd.read_csv('DATA_FILE')
 
-# 1. Convert date columns to datetime
+# Basic info and checking for missing values
+print("Initial data shape:", df.shape)
+print("Missing values:")
+print(df.isna().sum())
+
+# Rename columns for consistency
+df = df.rename(columns={
+    'No-show': 'no_show',
+    'Handcap': 'handicap'
+})
+
+# Convert date columns to datetime
 df['ScheduledDay'] = pd.to_datetime(df['ScheduledDay'])
 df['AppointmentDay'] = pd.to_datetime(df['AppointmentDay'])
 
-# 2. Create a feature for days between scheduling and appointment
-df['DaysBetween'] = (df['AppointmentDay'] - df['ScheduledDay']).dt.days
+# Create a new feature: days between scheduling and appointment
+df['days_difference'] = (df['AppointmentDay'] - df['ScheduledDay']).dt.total_seconds() / (60*60*24)
 
-# 3. Check and handle age outliers
-print(f"Age statistics: Min={df['Age'].min()}, Max={df['Age'].max()}, Mean={df['Age'].mean():.2f}")
-# Optionally filter out unreasonable ages
-# df = df[(df['Age'] >= 0) & (df['Age'] <= 120)]
-
-# 4. Convert binary columns to proper boolean
-binary_cols = ['Scholarship', 'Hipertension', 'Diabetes', 'Alcoholism', 'Handcap', 'SMS_received']
-for col in binary_cols:
+# Convert binary columns to proper boolean type
+binary_columns = ['Scholarship', 'Hipertension', 'Diabetes', 'Alcoholism', 'handicap', 'SMS_received']
+for col in binary_columns:
     df[col] = df[col].astype(bool)
 
-# 5. Convert No-show to boolean
-df['No-show'] = df['No-show'].map({'Yes': True, 'No': False})
+# Convert no_show to boolean (Yes = missed appointment / No = attended)
+df['no_show'] = df['no_show'].map({'Yes': True, 'No': False})
 
-# 6. Check for duplicate appointments
-duplicates = df.duplicated(subset=['PatientId', 'AppointmentDay'], keep=False)
-print(f"Number of duplicate appointments: {duplicates.sum()}")
+# Check for and handle potential age outliers
+print("Age statistics:")
+print(df['Age'].describe())
 
-# 7. Check for missing values
-missing_values = df.isnull().sum()
-print("Missing values by column:")
-print(missing_values[missing_values > 0])
+# Remove any negative ages or extremely high ages (e.g., > 120)
+df = df[(df['Age'] >= 0) & (df['Age'] <= 120)]
 
-# 8. Create a cleaned dataset
-df_clean = df.copy()
+# Check for duplicates
+duplicate_count = df.duplicated().sum()
+print(f"Number of duplicate rows: {duplicate_count}")
+if duplicate_count > 0:
+    df = df.drop_duplicates()
 
-# Display the first few rows of cleaned data
-print(df_clean.head())
+# Final cleaned data
+print("Final data shape:", df.shape)
+print(df.head())
 
-# Save the cleaned dataset
-df_clean.to_csv('cleaned_appointments.csv', index=False)
+# Save cleaned data
+df.to_csv('cleaned_appointment_data.csv', index=False)
 ```
 
-## Additional Observations
-
-1. The `PatientId` and `AppointmentID` appear to be unique identifiers.
-2. The dataset contains medical conditions like hypertension, diabetes, alcoholism, and disability.
-3. The `No-show` column indicates whether the patient missed their appointment.
-4. The time component in the dates might be relevant for analysis.
-5. The age distribution should be examined more closely to validate the data.
-6. Neighborhood names are in capital letters and some have special characters, which might need standardization.
-
-This code performs basic cleaning while preserving the original data structure. Additional domain-specific cleaning could be performed based on further requirements or analyses.
+This code addresses all the main cleaning tasks required for this dataset. It handles date conversions, creates useful features, standardizes column names, transforms data types, and handles potential issues like outliers and duplicates.

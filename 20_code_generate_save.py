@@ -1,8 +1,15 @@
+# Given a prompt and a some sample CSV data from 25_medical_appointments.csv, generate an analysis of the data (without the the data card) and produces an analysis of the data and a python code to clean it.
+
+# The analysis is saved in a file called code_response_NNN.md, where NNN is a 3-digit number with leading zeros and the next number in sequence.
+#
+# The code is then extracted from the markdown file and saved in a python file called code_response_001_python_code.py. The code is then executed and the cleaned data is saved in a file called cleaned_25_medical_appointments.csv
+
+# The initial CSV file can be made variable.
+
 import os
 import re
 import base64
-import anthropic
-from openai import OpenAI
+
 from dotenv import load_dotenv
 from rich.console import Console
 
@@ -112,7 +119,7 @@ def extract_python_code(markdown_file, output_file=None):
         # Combine all code blocks with newlines between them
         extracted_code = "\n\n".join(matches)
 
-        # replace 'DATA_FILE' with the actual file name
+        # replace 'DATA_FILE' with the actual file name - this is result from the prompt - a refined prompt might be needed.
         extracted_code = extracted_code.replace(
             "DATA_FILE", "25_medical_appointments.csv"
         )
@@ -142,6 +149,8 @@ def main():
     DATA_FILE = "./25_medical_appointments_sample.csv"
 
     PROMPT_FILE = "./prompts/02_base_prompt.md"
+    # You are an experienced Python data analyst. Analyse the CSV content and list all the actions needed to clean the data and the Python Code to do it. Keep the code small and simple. The content of the file is called {DATA_FILE} and its content is {file_content}
+
     OUTPUT_FILE = find_next_response_file()[1]
     console.print(
         f"\n[green]Next response file: {OUTPUT_FILE}[/]\n"
@@ -154,9 +163,10 @@ def main():
         # Initialize LLM client
         llm = LLMClient(provider=provider)
 
-        # Read the file content and encode as base64
-        with open(DATA_FILE, "rb") as f:
-            file_content = base64.b64encode(f.read()).decode("utf-8")
+        # Read the file content and encode/decode as base64 to prevent ASCII errors.
+        with open(DATA_FILE, "r", encoding="utf-8") as f:
+            # file_content = base64.b64encode(f.read()).decode("utf-8") when rb
+            file_content = f.read()
 
         # Read prompt
         system_message = prompt + file_content

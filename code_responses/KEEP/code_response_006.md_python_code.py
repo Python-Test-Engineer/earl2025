@@ -1,44 +1,51 @@
 import pandas as pd
 import numpy as np
-from datetime import datetime
 
 # Load the data
 df = pd.read_csv('25_medical_appointments.csv')
 
-# 1. Convert date columns to datetime
+# Basic info and checking for missing values
+print("Initial data shape:", df.shape)
+print("Missing values:")
+print(df.isna().sum())
+
+# Rename columns for consistency
+df = df.rename(columns={
+    'No-show': 'no_show',
+    'Handcap': 'handicap'
+})
+
+# Convert date columns to datetime
 df['ScheduledDay'] = pd.to_datetime(df['ScheduledDay'])
 df['AppointmentDay'] = pd.to_datetime(df['AppointmentDay'])
 
-# 2. Create a feature for days between scheduling and appointment
-df['DaysBetween'] = (df['AppointmentDay'] - df['ScheduledDay']).dt.days
+# Create a new feature: days between scheduling and appointment
+df['days_difference'] = (df['AppointmentDay'] - df['ScheduledDay']).dt.total_seconds() / (60*60*24)
 
-# 3. Check and handle age outliers
-print(f"Age statistics: Min={df['Age'].min()}, Max={df['Age'].max()}, Mean={df['Age'].mean():.2f}")
-# Optionally filter out unreasonable ages
-# df = df[(df['Age'] >= 0) & (df['Age'] <= 120)]
-
-# 4. Convert binary columns to proper boolean
-binary_cols = ['Scholarship', 'Hipertension', 'Diabetes', 'Alcoholism', 'Handcap', 'SMS_received']
-for col in binary_cols:
+# Convert binary columns to proper boolean type
+binary_columns = ['Scholarship', 'Hipertension', 'Diabetes', 'Alcoholism', 'handicap', 'SMS_received']
+for col in binary_columns:
     df[col] = df[col].astype(bool)
 
-# 5. Convert No-show to boolean
-df['No-show'] = df['No-show'].map({'Yes': True, 'No': False})
+# Convert no_show to boolean (Yes = missed appointment / No = attended)
+df['no_show'] = df['no_show'].map({'Yes': True, 'No': False})
 
-# 6. Check for duplicate appointments
-duplicates = df.duplicated(subset=['PatientId', 'AppointmentDay'], keep=False)
-print(f"Number of duplicate appointments: {duplicates.sum()}")
+# Check for and handle potential age outliers
+print("Age statistics:")
+print(df['Age'].describe())
 
-# 7. Check for missing values
-missing_values = df.isnull().sum()
-print("Missing values by column:")
-print(missing_values[missing_values > 0])
+# Remove any negative ages or extremely high ages (e.g., > 120)
+df = df[(df['Age'] >= 0) & (df['Age'] <= 120)]
 
-# 8. Create a cleaned dataset
-df_clean = df.copy()
+# Check for duplicates
+duplicate_count = df.duplicated().sum()
+print(f"Number of duplicate rows: {duplicate_count}")
+if duplicate_count > 0:
+    df = df.drop_duplicates()
 
-# Display the first few rows of cleaned data
-print(df_clean.head())
+# Final cleaned data
+print("Final data shape:", df.shape)
+print(df.head())
 
-# Save the cleaned dataset
-df_clean.to_csv('cleaned_appointments.csv', index=False)
+# Save cleaned data
+df.to_csv('cleaned_appointment_data.csv', index=False)
