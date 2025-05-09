@@ -173,6 +173,9 @@ def main():
 
         # Analyze the chart
         analysis = analyze_chart_with_claude(base64_image, questions)
+        with open("25.5_chart_analysis.md", "w") as f:
+            f.write(analysis)
+        print("Analysis saved to chart_analysis.md")
 
         # Print the analysis
         print("\n=== CLAUDE'S CHART ANALYSIS ===\n")
