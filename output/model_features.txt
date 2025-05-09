@@ -1,0 +1,12 @@
+Age
+Scholarship
+Hipertension
+Diabetes
+Alcoholism
+Handcap
+SMS_received
+DayDifference
+ScheduledDayOfWeek
+AppointmentDayOfWeek
+ScheduledHour
+Gender_M
