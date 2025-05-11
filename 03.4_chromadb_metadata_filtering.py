@@ -1,7 +1,7 @@
 import chromadb
 
 PATH = "./chroma_db"
-COLLECTION_NAME = "chinook_sql"
+COLLECTION_NAME = "reports"
 
 
 client = chromadb.PersistentClient(path=PATH)  # or HttpClient()

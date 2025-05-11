@@ -7,7 +7,7 @@ from typing import List, Dict, Any
 
 
 PATH = "./chroma_db"
-COLLECTION_NAME = "chinook_sql"
+COLLECTION_NAME = "reports"
 
 
 # Create a sample CSV file with 10 records
