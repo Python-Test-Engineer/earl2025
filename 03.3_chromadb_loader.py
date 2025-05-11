@@ -5,7 +5,9 @@ import uuid
 import csv
 from typing import List, Dict, Any
 
-COLLECTION_NAME = "test_collection_04"
+
+PATH = "./chroma_db"
+COLLECTION_NAME = "chinook_sql"
 
 
 # Create a sample CSV file with 10 records
@@ -160,16 +162,16 @@ def load_csv_to_chromadb(csv_file: str, collection_name: str = COLLECTION_NAME):
     Lists and dictionaries are not supported as direct values in metadata.
     """
     # Initialize ChromaDB client
-    client = chromadb.PersistentClient(path="./chroma_db")
+    client = chromadb.PersistentClient(path=PATH)
 
     # Create or get a collection
     try:
-        collection = client.create_collection(name=collection_name)
-        print(f"Created new collection: {collection_name}")
+        collection = client.create_collection(name=COLLECTION_NAME)
+        print(f"Created new collection: {COLLECTION_NAME}")
     except ValueError:
         # Collection already exists
-        collection = client.get_collection(name=collection_name)
-        print(f"Using existing collection: {collection_name}")
+        collection = client.get_collection(name=COLLECTION_NAME)
+        print(f"Using existing collection: {COLLECTION_NAME}")
 
     # Read CSV file
     df = pd.read_csv(csv_file)
