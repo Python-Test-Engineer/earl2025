@@ -9,8 +9,13 @@ In this 90 minute workshop we will work almost exclusively with notebooks.
 Part One:
 
 1.We will learn how to build AI Agents from scratch and see that they can be considered to use ‘AI as API’. A new way of coding is involved and we will spend time understanding how Generative AI is used.
-2. We will look at the fundamental patterns and explore Toole/Functioncalling.3.We will examine how Multi Agents frameworks use traditional design pat-terns.4.We will also look briefly at how we test Agentically and evaluate our AgentMy aims for the workshop are to show that: 
-1. To see that it can be just ‘AI as API’, albeit a very magical API. 2. To show that AI based apps need not be all AI or not at all, but we can have ‘a bit of AI in our apps’. 
+2. We will look at the fundamental patterns and explore Toole/Function calling.
+3.We will examine how Multi Agents frameworks use traditional design patterns.
+4.We will also look briefly at how we test Agentically and evaluate our Agents.
+
+My aims for the workshop are to show that: 
+1. To see that it can be just ‘AI as API’, albeit a very magical API. 
+2. To show that AI based apps need not be all AI or not at all, but we can have ‘a bit of AI in our apps’. 
 3. To show that it is ‘business as usual’ as Pythonistas, using our experience and skills to create AI Apps.
 
 Part Two:
@@ -22,3 +27,7 @@ Part Two:
 Access to an LLM will be required. 
 Groq provides a free tier which will be more than suﬀicient for our use. It uses the same interface as OpenAI so an OpenAI API key or Groq API key will be suﬀicient. 
 Free Tier with Groq: https://console.groq.com/login
+
+GitHub Repository: [To be available a few days prior to event]
+
+About Craig: https://craig-west.netlify.app/
