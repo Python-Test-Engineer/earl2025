@@ -73,7 +73,7 @@ agent = create_react_agent(
 
 question = "Which sales agent made the most in sales in 2009?"
 question = "What is the best selling album?"
-question = "How many genres are there ?"
+question = "How many genres are there?"
 
 for step in agent.stream(
     {"messages": [{"role": "user", "content": question}]},
