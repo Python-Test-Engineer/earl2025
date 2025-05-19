@@ -7,8 +7,9 @@ from rich.console import Console
 
 console = Console()
 
-load_dotenv(find_dotenv())
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+load_dotenv(find_dotenv(), override=True)
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 console.print(f"[dark_orange]Using OpenAI API key: {OPENAI_API_KEY[:12]}[/]")
 # Set up OpenAI API key
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -63,6 +64,6 @@ for t in text_list:
     output_list.append(get_features(t))
 
 output_df = pd.DataFrame(output_list)
-output_filename = "./data_output/extracted_features.csv"
+output_filename = "./output/extracted_features.csv"
 console.print(f"[green bold]Outputing to {output_filename}[/]")
 output_df.to_csv(output_filename, index=False)
