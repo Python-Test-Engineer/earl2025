@@ -1,4 +1,4 @@
-# Given a prompt and a some sample CSV data from 25_medical_appointments.csv, generate an analysis of the data (without the the data card) and produces an analysis of the data and a python code to clean it.
+# Given a prompt and a some sample CSV data from 25_medical_appointments.csv, generate an analysis of the data (without the the data card) and produces an analysis of the data and the python code to clean it.
 
 # The analysis is saved in a file called code_response_NNN.md, where NNN is a 3-digit number with leading zeros and the next number in sequence.
 #
@@ -10,7 +10,7 @@ import os
 import re
 import base64
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from rich.console import Console
 
 from utils_agentic.base_import import LLMClient, check_api_keys, read_prompt_file
@@ -137,7 +137,7 @@ def extract_python_code(markdown_file, output_file=None):
 
 def main():
     """Main function to run the LLM client."""
-    load_dotenv()
+    load_dotenv(find_dotenv(), override=True)
     console = Console()
 
     # Check API keys
@@ -145,16 +145,14 @@ def main():
     check_api_keys()
 
     provider = "ANTHROPIC"  # Change as needed
-
+    # https://www.kaggle.com/datasets/joniarroba/noshowappointments/data
     DATA_FILE = "./25_medical_appointments_sample.csv"
 
     PROMPT_FILE = "./prompts/02_base_prompt.md"
     # You are an experienced Python data analyst. Analyse the CSV content and list all the actions needed to clean the data and the Python Code to do it. Keep the code small and simple. The content of the file is called {DATA_FILE} and its content is {file_content}
 
     OUTPUT_FILE = find_next_response_file()[1]
-    console.print(
-        f"\n[green]Next response file: {OUTPUT_FILE}[/]\n"
-    )  # print(OUTPUT_FILE)
+    console.print(f"\n[green]Next response file: {OUTPUT_FILE}[/]\n")
     # Read the file content and encode as base64
     with open(PROMPT_FILE, "r") as f:
         prompt = f.read()
@@ -194,3 +192,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+# Days between may give -1 where 

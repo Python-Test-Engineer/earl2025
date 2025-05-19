@@ -1,54 +1,55 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
-# Load the data
-df = pd.read_csv('25_medical_appointments.csv')
+# 1. Load the data
+df = pd.read_csv("25_medical_appointments.csv")
 
-# 1. Basic Data Inspection
-print(f"Shape of data: {df.shape}")
-print(f"Columns: {df.columns.tolist()}")
-print(f"Missing values: {df.isnull().sum().sum()}")
+# 2. Initial inspection
+print("Initial shape:", df.shape)
+print("\nData types:\n", df.dtypes)
+print("\nMissing values:\n", df.isnull().sum())
 
-# 2. Fix column names
-df = df.rename(columns={
-    'No-show': 'NoShow',  # Remove hyphen for better accessibility
-    'Handcap': 'Handicap'  # Fix typo
-})
+# 3. Fix column naming inconsistency and typo
+df = df.rename(columns={"No-show": "NoShow", "Handcap": "Handicap"})
 
-# 3. Convert date columns to datetime
-df['ScheduledDay'] = pd.to_datetime(df['ScheduledDay'])
-df['AppointmentDay'] = pd.to_datetime(df['AppointmentDay'])
+# 4. Convert date columns to datetime
+df["ScheduledDay"] = pd.to_datetime(df["ScheduledDay"])
+df["AppointmentDay"] = pd.to_datetime(df["AppointmentDay"])
 
-# 4. Create feature for days between scheduling and appointment
-df['DaysBeforeAppointment'] = (df['AppointmentDay'] - df['ScheduledDay']).dt.days
+# 5. Create a wait time feature (days between scheduling and appointment)
+df["WaitDays"] = (df["AppointmentDay"] - df["ScheduledDay"]).dt.days
 
-# 5. Check for unreasonable values in Age
-print(f"Age range: {df['Age'].min()} to {df['Age'].max()}")
-# Filter out any records with negative or unreasonably high ages
-df = df[(df['Age'] >= 0) & (df['Age'] <= 120)]
-
-# 6. Convert binary features to consistent format
-binary_columns = ['Scholarship', 'Hipertension', 'Diabetes', 'Alcoholism', 'SMS_received']
+# 6. Convert binary indicators to boolean
+binary_columns = [
+    "Scholarship",
+    "Hipertension",
+    "Diabetes",
+    "Alcoholism",
+    "Handicap",
+    "SMS_received",
+]
 for col in binary_columns:
-    df[col] = df[col].astype(int)
+    df[col] = df[col].astype(bool)
 
-# 7. Convert target variable to binary (1 for no-show, 0 for showed up)
-df['NoShow'] = df['NoShow'].map({'Yes': 1, 'No': 0})
+# 7. Convert NoShow to boolean (Yes/No to True/False)
+df["NoShow"] = df["NoShow"].map({"Yes": True, "No": False})
 
-# 8. Check for duplicates
-duplicate_count = df.duplicated().sum()
-print(f"Number of duplicates: {duplicate_count}")
-if duplicate_count > 0:
-    df = df.drop_duplicates()
+# 8. Check for age outliers
+print("\nAge statistics:")
+print(df["Age"].describe())
 
-# 9. Create a final clean dataset
-df_clean = df.copy()
+# Remove any negative ages or extreme outliers
+df = df[df["Age"] >= 0]
+df = df[df["Age"] < 120]  # Assuming 120 as reasonable upper limit
 
-# 10. Display the cleaned dataset info
-print("\nCleaned Dataset Information:")
-print(df_clean.info())
-print("\nSample of cleaned data:")
-print(df_clean.head())
+# 9. Standardize neighborhood names (keeping them uppercase but trimming spaces)
+df["Neighbourhood"] = df["Neighbourhood"].str.strip().str.upper()
 
-# Save the cleaned dataset
-df_clean.to_csv('cleaned_appointment_data.csv', index=False)
+# 10. Final data summary
+print("\nFinal cleaned data shape:", df.shape)
+print("\nData types after cleaning:\n", df.dtypes)
+print("\nSample of cleaned data:\n", df.head())
+
+# Save the cleaned data
+df.to_csv("25_medical_appointments_CLEANED.csv", index=False)
