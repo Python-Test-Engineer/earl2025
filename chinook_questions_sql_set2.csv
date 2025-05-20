@@ -1,4 +1,3 @@
-```csv
 "Question","SQL"
 "What are the names of all customers who made purchases in 2011?","SELECT DISTINCT Customer.FirstName, Customer.LastName FROM Customer JOIN Invoice ON Customer.CustomerId = Invoice.CustomerId WHERE strftime('%Y', Invoice.InvoiceDate) = '2011' ORDER BY Customer.LastName"
 "Which tracks have never been purchased?","SELECT Track.Name, Track.TrackId FROM Track LEFT JOIN InvoiceLine ON Track.TrackId = InvoiceLine.TrackId WHERE InvoiceLine.InvoiceLineId IS NULL"
@@ -30,4 +29,3 @@
 "What's the sales trend by quarter over the last three years?","SELECT strftime('%Y', InvoiceDate) AS Year, 'Q' || ((strftime('%m', InvoiceDate) + 2) / 3) AS Quarter, SUM(Total) AS QuarterlyRevenue FROM Invoice WHERE InvoiceDate >= date('now', '-3 years') GROUP BY Year, Quarter ORDER BY Year, Quarter"
 "Which tracks appear in the most playlists?","SELECT Track.Name, COUNT(DISTINCT PlaylistTrack.PlaylistId) AS PlaylistCount FROM Track JOIN PlaylistTrack ON Track.TrackId = PlaylistTrack.TrackId GROUP BY Track.TrackId ORDER BY PlaylistCount DESC LIMIT 10"
 "Find all invoices that contain tracks from more than 3 different genres","SELECT Invoice.InvoiceId, COUNT(DISTINCT Track.GenreId) AS GenreCount FROM Invoice JOIN InvoiceLine ON Invoice.InvoiceId = InvoiceLine.InvoiceId JOIN Track ON InvoiceLine.TrackId = Track.TrackId GROUP BY Invoice.InvoiceId HAVING COUNT(DISTINCT Track.GenreId) > 3"
-```
