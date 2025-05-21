@@ -329,10 +329,14 @@ def build_predictive_model(df):
     # Train a Random Forest model
     model = RandomForestClassifier(n_estimators=100, random_state=42)
     model.fit(X_train, y_train)
+    print("Model training complete.")
+    print("Model accuracy on training set:", model.score(X_train, y_train))
 
     # Make predictions
     y_pred = model.predict(X_test)
     y_prob = model.predict_proba(X_test)[:, 1]
+    print("Model accuracy on test set:", model.score(X_test, y_test))
+    print("Model ROC AUC score:", model.score(X_test, y_test))
 
     # Evaluate the model
     accuracy = accuracy_score(y_test, y_pred)
@@ -349,6 +353,8 @@ def build_predictive_model(df):
     feature_importance = pd.DataFrame(
         {"Feature": X.columns, "Importance": model.feature_importances_}
     ).sort_values("Importance", ascending=False)
+    print("\nFeature Importance:")
+    print(feature_importance)
 
     plt.figure(figsize=(12, 8))
     sns.barplot(x="Importance", y="Feature", data=feature_importance)
@@ -356,6 +362,8 @@ def build_predictive_model(df):
     plt.tight_layout()
     plt.savefig("output/feature_importance.png")
     plt.close()
+    print(
+        "Feature importance plot saved as 'output/feature_importance.png'")
 
     # Threshold optimization
     thresholds = np.arange(0, 1, 0.01)
@@ -606,7 +614,7 @@ def generate_recommendations(df, model, X_columns):
     print("   - Continuously monitor and improve model performance")
 
     # Save recommendations to a text file
-    with open("output/recommendations.txt", "w") as f:
+    with open("./output/recommendations.txt", "w") as f:
         f.write("=== MEDICAL APPOINTMENT NO-SHOW RECOMMENDATIONS ===\n\n")
         f.write("1. Implement Enhanced SMS Reminder System\n")
         f.write(

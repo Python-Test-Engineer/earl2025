@@ -150,6 +150,7 @@ def main():
     # For this tutorial, we'll use a sample chart from a public source
     # This URL points to a sample bar chart from a public data visualization site
     chart_url = "https://craig-west.netlify.app/images/age_distribution.png"
+    chart_url = "https://craig-west.netlify.app/images/feature_importance.png"
 
     # Specific questions we want Claude to answer about the chart
     questions = [
