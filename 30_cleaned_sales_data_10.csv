@@ -1,9 +1,0 @@
-CustomerID,PurchaseDate,Product,Quantity,Price,Email,Status,ZipCode,Rating,UniqueIdentifier,ProductSpecifications,CustomerComments
-CUST-00805,2020-10-11,smartphone,11,610.3,imwiiu@gmail.com,pending,27553,3,ID-P5YRO1WODG,"{'color': 'blue', 'weight': 3.46, 'dimensions': {'length': 22.4, 'width': 5.8, 'height': 9.0}}",Product arrived damaged
-CUST-00852,2021-08-22,laptop,17,202.58,rdslsnayr@mail.net,completed,17594,4,ID-ZDN9S8TSNC,"{'color': 'silver', 'weight': 2.37, 'dimensions': {'length': 26.9, 'width': 9.8, 'height': 7.7}}",Will purchase again
-CUST-00775,2021-10-12,mouse,7,930.42,ixctt@gmail.com,completed,19994,2,ID-19ARSOZ9E5,"{'color': 'red', 'weight': 2.1, 'dimensions': {'length': 15.1, 'width': 15.2, 'height': 5.0}}",Item as described
-CUST-00345,2020-04-03,smartphone,1,579.16,tqffhnurh@yahoo.com,completed,50793,4,ID-GV7P2A2Q9O,"{'color': 'black', 'weight': 1.27, 'dimensions': {'length': 6.3, 'width': 18.0, 'height': 4.6}}",Will purchase again
-CUST-00728,2020-12-22,tablet,1,268.5,cyocooh@hotmail.com,completed,89127,2,ID-JF3C07BTI1,"{'color': 'silver', 'weight': 2.91, 'dimensions': {'length': 24.2, 'width': 9.4, 'height': 5.9}}",Product arrived damaged
-CUST-00431,2020-12-07,monitor,8,413.06,gbpildmrc@gmail.com,processing,19294,5,ID-RIMVN1BT9W,"{'color': 'blue', 'weight': 1.41, 'dimensions': {'length': 19.3, 'width': 10.6, 'height': 9.6}}",Will purchase again
-CUST-00630,2021-11-17,tablet,8,115.4,customer@placeholder.com,completed,26144,1,ID-NJSLEU1S5N,"{'color': 'blue', 'weight': 4.56, 'dimensions': {'length': 22.2, 'width': 8.2, 'height': 5.8}}",Delivery was delayed
-CUST-00811,2020-06-13,tablet,12,81.66,jiftvcxto@gmail.com,pending,78938,3,ID-18BYPKNXMF,"{'color': 'red', 'weight': 2.42, 'dimensions': {'length': 24.9, 'width': 18.0, 'height': 4.0}}",Wrong item was shipped

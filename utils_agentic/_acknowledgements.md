@@ -1,1 +1,0 @@
-examples 10 to 14 takend from Udemy course
