@@ -1,43 +1,9 @@
 import pandas as pd
 import numpy as np
 
-# Load the dataset
-# In a real scenario, you would use: df = pd.read_csv('titanic.csv')
-# For this example, we'll create the dataframe from the provided sample
-data = {
-    "PassengerId": [1, 2, 3, 4, 5, 6, 7, 8],
-    "Survived": [0, 1, 1, 1, 0, 0, 0, 0],
-    "Pclass": [3, 1, 3, 1, 3, 3, 1, 3],
-    "Name": [
-        "Braund, Mr. Owen Harris",
-        "Cumings, Mrs. John Bradley (Florence Briggs Thayer)",
-        "Heikkinen, Miss. Laina",
-        "Futrelle, Mrs. Jacques Heath (Lily May Peel)",
-        "Allen, Mr. William Henry",
-        "Moran, Mr. James",
-        "McCarthy, Mr. Timothy J",
-        "Palsson, Master. Gosta Leonard",
-    ],
-    "Sex": ["male", "female", "female", "female", "male", "male", "male", "male"],
-    "Age": [22.0, 38.0, 26.0, 35.0, 35.0, None, 54.0, 2.0],
-    "SibSp": [1, 1, 0, 1, 0, 0, 0, 3],
-    "Parch": [0, 0, 0, 0, 0, 0, 0, 1],
-    "Ticket": [
-        "A/5 21171",
-        "PC 17599",
-        "STON/O2. 3101282",
-        "113803",
-        "373450",
-        "330877",
-        "17463",
-        "349909",
-    ],
-    "Fare": [7.25, 71.2833, 7.925, 53.1, 8.05, 8.4583, 51.8625, 21.075],
-    "Cabin": ["", "C85", "", "C123", "", "", "E46", ""],
-    "Embarked": ["S", "C", "S", "S", "S", "Q", "S", "S"],
-}
-
-df = pd.read_csv("26_titanic_original.csv")
+INPUT_FILE = "26.1_titanic_original.csv"
+OUTPUT_FILE = "26.2_titanic_cleaned.csv"
+df = pd.read_csv(INPUT_FILE)
 
 # 1. Initial Data Exploration
 print("Dataset Shape:", df.shape)
@@ -160,5 +126,5 @@ print("\nTransformed Data Sample:")
 print(X.head())
 
 
-df_encoded.to_csv("titanic_cleaned.csv", index=False)
-print("\nCleaned dataset saved to 'titanic_cleaned.csv'")
+df_encoded.to_csv(OUTPUT_FILE, index=False)
+print(f"\nCleaned dataset saved to {OUTPUT_FILE}")
