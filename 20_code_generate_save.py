@@ -1,6 +1,6 @@
 # Given a prompt and a some sample CSV data from 25_medical_appointments.csv, generate an analysis of the data (without the the data card) and produces an analysis of the data and the python code to clean it.
 
-# The analysis is saved in a file called code_response_NNN.md, where NNN is a 3-digit number with leading zeros and the next number in sequence.
+# The analysis is saved in a folder `code_responses` as a file called code_response_NNN.md, where NNN is a 3-digit number with leading zeros and the next number in sequence.
 #
 # The code is then extracted from the markdown file and saved in a python file called code_response_001_python_code.py. The code is then executed and the cleaned data is saved in a file called cleaned_25_medical_appointments.csv
 
@@ -192,4 +192,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-# Days between may give -1 where 
+# Days between may give -1 where

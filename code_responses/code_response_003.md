@@ -1,17 +1,16 @@
-# Analysis and Cleaning of Medical Appointment Data
+# Data Cleaning Analysis for Patient Appointment Data
 
-After examining the CSV content, I've identified several cleaning tasks that need to be performed. Here's the analysis and code to clean the data:
+After examining the CSV content, here are the actions needed to clean the data and the corresponding Python code:
 
-## Cleaning Tasks Needed:
+## Cleaning Actions Needed:
 
-1. Handle datetime columns (convert from string to datetime)
-2. Check and handle missing values
-3. Fix the column name 'Handcap' (likely should be 'Handicap')
-4. Rename 'No-show' to remove the hyphen for easier use
-5. Standardize categorical variables
-6. Convert binary fields to appropriate data types
-7. Check for outliers in Age
-8. Ensure PatientId and AppointmentID are properly formatted
+1. Check for missing values
+2. Convert date columns to datetime format
+3. Fix the column name 'Handcap' to 'Handicap'
+4. Convert binary columns to proper boolean type
+5. Rename 'No-show' to something more code-friendly (like 'no_show')
+6. Ensure Age values are reasonable (no negative values)
+7. Check for duplicate appointments
 
 ## Python Code for Data Cleaning:
 
@@ -22,41 +21,52 @@ import numpy as np
 # Load the data
 df = pd.read_csv('DATA_FILE')
 
-# 1. Fix column names
-df = df.rename(columns={
-    'Handcap': 'Handicap',
-    'No-show': 'NoShow'
-})
+# 1. Check for missing values and drop if necessary
+print("Missing values before cleaning:")
+print(df.isnull().sum())
+df = df.dropna()
 
-# 2. Convert datetime columns
+# 2. Convert date columns to datetime format
 df['ScheduledDay'] = pd.to_datetime(df['ScheduledDay'])
 df['AppointmentDay'] = pd.to_datetime(df['AppointmentDay'])
 
-# 3. Create a feature for waiting days
-df['WaitingDays'] = (df['AppointmentDay'] - df['ScheduledDay']).dt.days
+# 3. Fix column name 'Handcap' to 'Handicap'
+df = df.rename(columns={'Handcap': 'Handicap'})
 
-# 4. Convert binary columns to int (0/1)
-binary_cols = ['Scholarship', 'Hipertension', 'Diabetes', 'Alcoholism', 'SMS_received']
-for col in binary_cols:
-    df[col] = df[col].astype(int)
+# 4. Convert binary columns to proper boolean type
+binary_columns = ['Scholarship', 'Hipertension', 'Diabetes', 'Alcoholism', 'Handicap', 'SMS_received']
+for col in binary_columns:
+    df[col] = df[col].astype(bool)
 
-# 5. Convert NoShow to binary (0 = showed up, 1 = no-show)
-df['NoShow'] = df['NoShow'].map({'No': 0, 'Yes': 1})
+# 5. Rename 'No-show' to 'no_show' and convert to boolean
+df = df.rename(columns={'No-show': 'no_show'})
+df['no_show'] = df['no_show'].map({'No': False, 'Yes': True})
 
-# 6. Check for invalid age values
-# Filter out patients with unreasonable ages (e.g., negative or very high)
-df = df[(df['Age'] >= 0) & (df['Age'] <= 115)]
+# 6. Ensure Age values are reasonable
+print(f"Age range before cleaning: {df['Age'].min()} to {df['Age'].max()}")
+df = df[df['Age'] >= 0]  # Remove negative ages if any
 
-# 7. Standardize neighborhood names (capitalize)
-df['Neighbourhood'] = df['Neighbourhood'].str.title()
+# 7. Check for duplicate appointments
+duplicates = df.duplicated(subset=['PatientId', 'AppointmentDay']).sum()
+print(f"Number of duplicate appointments: {duplicates}")
 
-# 8. Handle any missing values
-df = df.dropna()
-
-# Display cleaned data information
-print(f"Cleaned data shape: {df.shape}")
-print(df.dtypes)
+# Display cleaned data info
+print("\nDataset after cleaning:")
+print(df.info())
 print(df.head())
+
+# Save the cleaned data
+df.to_csv('cleaned_appointment_data.csv', index=False)
 ```
 
-This code addresses the main data cleaning tasks while keeping the implementation simple and concise. The cleaning process converts date strings to datetime objects, standardizes column names, transforms categorical variables to appropriate formats, creates a useful feature (waiting days), and handles potential data issues like outliers in the age column.
+This code will:
+- Load the data and check for missing values
+- Convert date columns to proper datetime format
+- Fix the incorrect column name
+- Convert binary columns to boolean type
+- Rename the 'No-show' column to a more code-friendly version and convert it to boolean
+- Validate age values
+- Check for duplicate appointments
+- Save the cleaned dataset
+
+The code is kept simple and focuses on the essential cleaning tasks required for this dataset.
