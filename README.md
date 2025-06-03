@@ -25,6 +25,6 @@ To run LLMs, copy .env.sample to .env and add your OpenAI key or Groq API key:
 - OPENAI_API_KEY=sk-proj-TQa...
 - GROQ_API_KEY=gsk_ow4T...
 
-As some libraries can take a long time to load (some parts of the Langchain ecosystem), there is a req07.txt that has all the necessary requireiments to run the code up to 07 which is used to understand the basics of AI Agents.
+As some libraries can take a long time to load (some parts of the Langchain ecosystem), there is a req07.txt that has all the necessary requireiments to run the code up to 07 which is used to understand the basics of AI Agents. (Excludes 03.6_sql_finder_script.py which needs sentence transformers and can take some time. `pip install sentence_transformers`)
 
 Depending on when you set up, it may be best to use this first and load all the libraries as in requirements.txt. 

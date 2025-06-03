@@ -1,3 +1,10 @@
+# This gets an SQL query from a CSV file and allows you to find similar SQL queries based on natural language questions.
+
+# We can then ask LLM to modify the SQL query to suit our needs.
+
+# Afterwards I realised I used an LLM to create the SQL queries in the CSV file.
+
+
 import pandas as pd
 import chromadb
 from chromadb.utils import embedding_functions
@@ -116,7 +123,9 @@ SELECT Track.Name AS TrackName, Album.Title AS AlbumTitle, Artist.Name AS Artist
 I'll modify the SQL query to filter for tracks by the artist "David Bowie".
 Looking at the base query you provided, it retrieves track names along with their album titles and artist names. To filter this specifically for David Bowie, we need to add a WHERE clause that specifies the artist name.
 Here's the modified SQL query:
-sqlSELECT Track.Name AS TrackName, Album.Title AS AlbumTitle, Artist.Name AS ArtistName 
+
+
+SELECT Track.Name AS TrackName, Album.Title AS AlbumTitle, Artist.Name AS ArtistName 
 FROM Track 
 JOIN Album ON Track.AlbumId = Album.AlbumId 
 JOIN Artist ON Album.ArtistId = Artist.ArtistId
@@ -128,11 +137,13 @@ Filter the results to only include tracks where the artist name is 'David Bowie'
 Return the track names, album titles, and artist name for all David Bowie tracks in the database
 
 If you want to also sort the results, you could add an ORDER BY clause like this:
-sqlSELECT Track.Name AS TrackName, Album.Title AS AlbumTitle, Artist.Name AS ArtistName 
+
+SELECT Track.Name AS TrackName, Album.Title AS AlbumTitle, Artist.Name AS ArtistName 
 FROM Track 
 JOIN Album ON Track.AlbumId = Album.AlbumId 
 JOIN Artist ON Album.ArtistId = Artist.ArtistId
 WHERE Artist.Name = 'David Bowie'
 ORDER BY Album.Title, Track.Name
+
 This would order the results first by album title and then by track name within each album.RetryClaude does not have the ability to run the code it generates yet.Claude can make mistakes. Please double-check responses. 3.7 Sonnet
 """
