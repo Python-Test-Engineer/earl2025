@@ -45,6 +45,7 @@ def main():
 
     # Run example queries
     for i, query in enumerate(queries, 1):
+        print("==================================================")
         print(f"Query {i}: {query}")
         try:
             result = agent.invoke({"input": query})

@@ -1,3 +1,6 @@
+# Note for Craig - Run as python 35.1_chinook_langgraph.py not using arrow play for VSCode
+
+
 import requests
 from langchain.chat_models import init_chat_model
 from langchain_community.utilities import SQLDatabase
