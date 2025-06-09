@@ -1,3 +1,9 @@
+# Demo of using ChromaDB to load documents from a CSV file and query them SEMANTICALLY using metadata to refine search results so as not to search the entire document text.
+
+# It will become more useful later on when we do some Data Analytics but can be used for RAG as in FAQ, even taking in a filter returned from ROUTER.
+
+# ROUTER can provide the metadata to filter the results, e.g. by source, author, year, etc. and then we can use the metadata to refine the search results in ChromaDB to be the In Context Learning (ICL) for the RAG of FAQ.
+
 import pandas as pd
 import chromadb
 import json

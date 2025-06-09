@@ -1,9 +1,7 @@
 """
-CSV Cleaner Agent using Claude 3.7
+This was developed by uisng `cline` and allowing it to create the app.
 
-This script creates an agent that uses Claude 3.7 to clean generic CSV datasets.
-It loads a CSV file, sends the data to Claude with cleaning instructions,
-processes the response, and saves the cleaned data.
+It gets Claude 3.7 to clean a CSV dataset using custom instructions. This will be expensive in the real world, but is a demo of vibe coding as well as using the Anthropic API.
 
 Usage:
     python 30_cline_csv_cleaner_agent.py --input 30_dirty_sales_data_10.csv --output 30_cleaned_sales_data_10.csv

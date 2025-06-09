@@ -1,3 +1,5 @@
+# An example of using LangChain with a pandas DataFrame agent to analyze a CSV dataset.
+
 import pandas as pd
 from langchain.agents.agent_types import AgentType
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
