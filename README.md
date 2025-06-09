@@ -12,7 +12,7 @@ You will need an LLM API key.
 
 Groq offers a free tier and uses the same API signature as OpenAI.
 
-A few demo will use Anthropic's Claude API. You won't need an API key for Claude for the workshop but you will need to run it on your own machine. At this current time Claude is not available as a free tier but you will not have to pay money upfront of say $5 as with OpenAI.
+A few demos will use Anthropic's Claude API. You won't need an API key for Claude for the workshop but you will need to run it on your own machine. At this current time Claude is not available as a free tier but you will not have to pay money upfront of say $5 as with OpenAI.
 
 Free Tier with Groq: https://console.groq.com/login
 
