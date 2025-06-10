@@ -7,7 +7,7 @@ Search or get a list of all available tools.
 - Get the details of how to implement it.
 - Implement it and get a result.
 
-How does and AI Agent do this (discovery and implementation)?
+How does an AI Agent do this (discovery and implementation)?
 
 This is the basis of the Model Context Protocal.
 
