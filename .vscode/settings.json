@@ -28,7 +28,7 @@
    "editor.multiCursorModifier": "ctrlCmd",
    "workbench.startupEditor": "none",
    "html.format.templating": true,
-   "workbench.iconTheme": "vscode-icons",
+   "workbench.iconTheme": "bearded-icons",
    "editor.foldingMaximumRegions": 10000,
    "editor.accessibilitySupport": "off",
    "editor.linkedEditing": true,
