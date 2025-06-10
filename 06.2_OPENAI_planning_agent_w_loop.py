@@ -93,9 +93,9 @@ class Agent:
 
 
 system_prompt = """
-You run in a loop of REQUEST_MORE_CONTEXT, ACTION, OBSERVATION.
+You run in a loop of REQUEST_MORE_INFO, ACTION, UPDATE.
 
-You have a REQUEST_MORE_CONTEXT of what you need to do, then you take an ACTION using tools provided, then you get an OBSERVATION. YOu keep repeating this until you have an ANSWER. Then you return the ANSWER and break out of the loop.
+You have a REQUEST_MORE_INFO of what you need to do, then you take an ACTION using tools provided, then you get an UPDATE. YOu keep repeating this until you have an ANSWER. Then you return the ANSWER and break out of the loop.
 
 You have two tools available for your ACTIONS - **calculate_total** and **get_product_price** so that you can get the total price of an item requested by the user.
 
@@ -120,15 +120,15 @@ This uses the get_product_price with a product = 'bike', finds the price of the 
 
 User Question: What is total cost of a bike including VAT?
 
-AI Response: REQUEST_MORE_CONTEXT: I need to find the cost of a bike|ACTION|get_product_price|bike
+AI Response: REQUEST_MORE_INFO: I need to find the cost of a bike|ACTION|get_product_price|bike
 
-You will be called again with the result of get_product_price as the OBSERVATION and will have OBSERVATION|200 sent as another LLM prompt along with previous messages.
+You will be called again with the result of get_product_price as the UPDATE and will have UPDATE|200 sent as another LLM prompt along with previous messages.
 
 Then the next message will be:
 
-REQUEST_MORE_CONTEXT: I need to calculate the total including the VAT|ACTION|calculate_total|200
+REQUEST_MORE_INFO: I need to calculate the total including the VAT|ACTION|calculate_total|200
 
-The result wil be passed as another prompt as OBSERVATION|240 along with previous messages.
+The result wil be passed as another prompt as UPDATE|240 along with previous messages.
 
 If you have the ANSWER, output it as the ANSWER in this format:
 
@@ -153,7 +153,7 @@ def loop(max_iterations=10, prompt: str = ""):
         #
         # -------------------------
         #
-        # Here we loop over responses - if we have a REQUEST_MORE_CONTEXT/ACTION, we need to extract the function and arguments - if we have ANSWER, we need to return it and break from loop.
+        # Here we loop over responses - if we have a REQUEST_MORE_INFO/ACTION, we need to extract the function and arguments - if we have ANSWER, we need to return it and break from loop.
         if "ACTION" in result:
             #
             # extract function and arguments using the fact that we specified th | symbol as the delimiter
@@ -163,18 +163,18 @@ def loop(max_iterations=10, prompt: str = ""):
             next_function = next[2].strip()  # next[2] has the function to be used
             next_arg = str(next[3]).strip()  # next[3] has the argument to be used
             #
-            # if a tool/function exists - run it and prepend with OBSERVATION as we descrbed in system prompt
+            # if a tool/function exists - run it and prepend with UPDATE as we descrbed in system prompt
             #
             if next_function in tools:
                 result_tool = eval(f"{next_function}('{next_arg}')")
                 ######################################
-                # OBSERVATIONS passed back into prompt in the format OBSERVATION|result as specified in prompt template
-                prompt = f"OBSERVATION: {result_tool}"
+                # UPDATES passed back into prompt in the format UPDATE|result as specified in prompt template
+                prompt = f"NEW INFO: {result_tool}"
                 ######################################
                 console.print(f"[green]{prompt}[/]")
                 print("------------------------------\n")
             else:
-                prompt = "OBSERVATION: Tool not found"
+                prompt = "UPDATE: Tool not found"
             continue
         #
         # if we have a final ANSWER, store it and break out of loop
@@ -190,14 +190,14 @@ def loop(max_iterations=10, prompt: str = ""):
 
 # Let's run it...
 
-question = "What is cost of a tv including VAT?"
+question = "What is cost of a laptop including VAT?"
 console.print(f"\nQuestion is: [cyan italic]{question}\n[/]")  # end of loop
 
 loop(prompt=question)
 
 
 # NB We used
-# 'REQUEST_MORE_CONTEXT: I need to calculate the total including the VAT|ACTION|calculate_total|200' a
+# 'REQUEST_MORE_INFO: I need to calculate the total including the VAT|ACTION|calculate_total|200' a
 # as an instruction to the agent forthe output format
 # and
 # 'ANSWER|The price of the bike including VAT is 240'
