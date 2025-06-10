@@ -25,7 +25,6 @@ llm = init_chat_model("openai:gpt-4o-mini")
 # else:
 #     print(f"Failed to download the file. Status code: {response.status_code}")
 
-
 db = SQLDatabase.from_uri("sqlite:///35.2_Chinook.db")
 
 print(f"Dialect: {db.dialect}")
@@ -41,6 +40,8 @@ for tool in tools:
     console.print(f"\n[green][bold]{tool.name}:[/bold] {tool.description}[/]\n")
 
 from langgraph.prebuilt import create_react_agent
+
+# another way to create the prompt at EOF
 
 system_prompt = """
 You are an agent designed to interact with a SQL database.
@@ -83,3 +84,48 @@ for step in agent.stream(
     stream_mode="values",
 ):
     step["messages"][-1].pretty_print()
+
+
+#############
+ # Prompt to get recommended steps from the LLM
+recommend_steps_prompt = PromptTemplate(
+            template="""
+            You are a SQL Database Instructions Expert. Given the following information about the SQL database, 
+            recommend a series of numbered steps to take to collect the data and process it according to user instructions. 
+            The steps should be tailored to the SQL database characteristics and should be helpful 
+            for a sql database coding agent that will write the SQL code.
+            
+            IMPORTANT INSTRUCTIONS:
+            - Take into account the user instructions and the previously recommended steps.
+            - If no user instructions are provided, just return the steps needed to understand the database.
+            - Take into account the database dialect and the tables and columns in the database.
+            - Pay attention to use only the column names you can see in the tables below. Be careful to not query for columns that do not exist. Also, pay attention to which column is in which table.
+            - IMPORTANT: Pay attention to the table names and column names in the database. Make sure to use the correct table and column names in the SQL code. If a space is present in the table name or column name, make sure to account for it.
+            
+            
+            User instructions / Question:
+            {user_instructions}
+
+            Previously Recommended Steps (if any):
+            {recommended_steps}
+
+            Below are summaries of the database metadata and the SQL tables:
+            {all_sql_database_summary}
+
+            Return steps as a numbered list. You can return short code snippets to demonstrate actions. But do not return a fully coded solution. The code will be generated separately by a Coding Agent.
+            
+            Consider these:
+            
+            1. Consider the database dialect and the tables and columns in the database.
+            
+            
+            Avoid these:
+            1. Do not include steps to save files.
+            2. Do not include steps to modify existing tables, create new tables or modify the database schema.
+            3. Do not include steps that alter the existing data in the database.
+            4. Make sure not to include unsafe code that could cause data loss or corruption or SQL injections.
+            5. Make sure to not include irrelevant steps that do not help in the SQL agent's data collection and processing. Examples include steps to create new tables, modify the schema, save files, create charts, etc.
+  
+            
+            """
+
