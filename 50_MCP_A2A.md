@@ -1,1 +1,0 @@
-Discuss MCP and A2A
