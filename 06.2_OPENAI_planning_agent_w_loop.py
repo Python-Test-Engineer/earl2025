@@ -93,9 +93,9 @@ class Agent:
 
 
 system_prompt = """
-You run in a loop of THOUGHT, ACTION, OBSERVATION.
+You run in a loop of REQUEST_MORE_CONTEXT, ACTION, OBSERVATION.
 
-You have a THOUGHT of what you need to do, then you take an ACTION using tools provided, then you get an OBSERVATION. YOu keep repeating this until you have an ANSWER. Then you return the ANSWER and break out of the loop.
+You have a REQUEST_MORE_CONTEXT of what you need to do, then you take an ACTION using tools provided, then you get an OBSERVATION. YOu keep repeating this until you have an ANSWER. Then you return the ANSWER and break out of the loop.
 
 You have two tools available for your ACTIONS - **calculate_total** and **get_product_price** so that you can get the total price of an item requested by the user.
 
@@ -120,13 +120,13 @@ This uses the get_product_price with a product = 'bike', finds the price of the 
 
 User Question: What is total cost of a bike including VAT?
 
-AI Response: THOUGHT: I need to find the cost of a bike|ACTION|get_product_price|bike
+AI Response: REQUEST_MORE_CONTEXT: I need to find the cost of a bike|ACTION|get_product_price|bike
 
 You will be called again with the result of get_product_price as the OBSERVATION and will have OBSERVATION|200 sent as another LLM prompt along with previous messages.
 
 Then the next message will be:
 
-THOUGHT: I need to calculate the total including the VAT|ACTION|calculate_total|200
+REQUEST_MORE_CONTEXT: I need to calculate the total including the VAT|ACTION|calculate_total|200
 
 The result wil be passed as another prompt as OBSERVATION|240 along with previous messages.
 
@@ -153,7 +153,7 @@ def loop(max_iterations=10, prompt: str = ""):
         #
         # -------------------------
         #
-        # Here we loop over responses - if we have a THOUGHT/ACTION, we need to extract the function and arguments - if we have ANSWER, we need to return it and break from loop.
+        # Here we loop over responses - if we have a REQUEST_MORE_CONTEXT/ACTION, we need to extract the function and arguments - if we have ANSWER, we need to return it and break from loop.
         if "ACTION" in result:
             #
             # extract function and arguments using the fact that we specified th | symbol as the delimiter
@@ -197,7 +197,7 @@ loop(prompt=question)
 
 
 # NB We used
-# 'THOUGHT: I need to calculate the total including the VAT|ACTION|calculate_total|200' a
+# 'REQUEST_MORE_CONTEXT: I need to calculate the total including the VAT|ACTION|calculate_total|200' a
 # as an instruction to the agent forthe output format
 # and
 # 'ANSWER|The price of the bike including VAT is 240'
