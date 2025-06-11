@@ -202,6 +202,9 @@ payload = {
 }
 
 Low Temperature:
+
+https://medium.com/@jpraveenkanna/demystifying-llm-configurations-for-inference-3866979806de
+
 The bag is full of mostly blue marbles, with a few red and green. Low temperature means you're very likely to pull a blue marble, but you might occasionally get a red or green.
 
 High Temperature:
