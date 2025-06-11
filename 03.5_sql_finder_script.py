@@ -109,6 +109,7 @@ if __name__ == "__main__":
 
 
 """
+See 03.6 as well
 
 ~ Using a retreived SQL I asked it to modify it to give me a different result.
 
