@@ -69,6 +69,7 @@ def find_similar_query(user_input, collection, n_results=1):
 if __name__ == "__main__":
     # Path to the CSV file
     csv_path = "03.5_chinook_sql.csv"
+    print("Starting SQL Finder Script...will take time as DB created from CSV.")
     print(f"CSV file path: {csv_path}")
 
     # Load CSV into ChromaDB
@@ -79,37 +80,37 @@ if __name__ == "__main__":
     # Test with a specific question
     test_question = "Who made purchases in 2010?"
     test_question = (
-        "What are the total sales for each month of 2010 order by month desc?"  # 2
+        "What are the total sales by month of 2010 order by month desc?"  # 2
     )
     print(f"\nTesting with question: '{test_question}'")
     matches = find_similar_query(test_question, collection)
     if matches:
         match = matches[0]
         print("\nMost similar question:")
-        print(f"Q: {match['question']}")
+        print(f"Q: {match['question']}\n")
         print(f"SQL: {match['sql']}")
         if match["distance"] is not None:
-            print(f"Similarity score: {1 - match['distance']:.4f}")
+            print(f"\nSimilarity score: {1 - match['distance']:.4f}\n")
     else:
         print("No matching queries found.")
 
     # # Interactive query mode
-    # print("\nEnter a question to find similar SQL queries (or 'exit' to quit):")
-    # while True:
-    #     user_input = input("\nYour question: ")
-    #     if user_input.lower() == "exit":
-    #         break
+    print("\nEnter a question to find similar SQL queries (or 'exit' to quit):")
+    while True:
+        user_input = input("\nYour question: ")
+        if user_input.lower() == "exit":
+            break
 
-    #     matches = find_similar_query(user_input, collection)
-    #     if matches:
-    #         match = matches[0]
-    #         print("\nMost similar question:")
-    #         print(f"Q: {match['question']}")
-    #         print(f"SQL: {match['sql']}")
-    #         if match["distance"] is not None:
-    #             print(f"Similarity score: {1 - match['distance']:.4f}")
-    #     else:
-    #         print("No matching queries found.")
+        matches = find_similar_query(user_input, collection)
+        if matches:
+            match = matches[0]
+            print("\nMost similar question:")
+            print(f"Q: {match['question']}\n")
+            print(f"SQL: {match['sql']}")
+            if match["distance"] is not None:
+                print(f"Similarity score: {1 - match['distance']:.4f}\n")
+        else:
+            print("No matching queries found.")
 
 
 """
