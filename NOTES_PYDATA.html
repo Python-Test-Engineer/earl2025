@@ -322,15 +322,6 @@
       href="https://en.wikipedia.org/wiki/Punched_tape#/media/File:Creed_model_6S-2_paper_tape_reader.jpg">https://en.wikipedia.org/wiki/Punched_tape#/media/File:Creed_model_6S-2_paper_tape_reader.jpg</a>
   </p>
   <p>…cut and paste was cut and paste!</p>
-  <h1 id="demo-django-app">Demo Django App</h1>
-  <p>We will look at a demo Django app that uses AI Agents to call LLMs.
-    It is a chatbot style but could be a text field in a form that has
-    Natural Language.</p>
-  <p>I took information from the Conference website and used the code, ( a
-    copy and paste), from <code>03_faq_ipynb</code> to provide a help
-    chatbot…</p>
-  <p>“what is a sprint and when does it take place - also I am not an
-    expert coder does that matter?”</p>
   <h1 id="what-are-ai-agents">What are AI Agents?</h1>
   <p>There are many definitions:</p>
   <h2 id="anthropic">Anthropic</h2>
@@ -405,6 +396,20 @@
   <img src="./100_INPUT_OUTPUT.png" width=1000px>
 
   <p>The <code>function</code> might be a Python function or a class.</p>
+  <h2 id="3rd-party-agents-and-tools">3rd Party Agents and Tools</h2>
+  <p><a href="https://aiagentsdirectory.com/allstats">https://aiagentsdirectory.com/allstats</a>
+    shows the number of growing Agents available as stand alone Agentic
+    systems.</p>
+  <p>However, two new protocols have emerged this year: Model Context
+    Protocol, (MCP), and Agent 2 Agent, (A2A).</p>
+  <p>If we think of our mobile phone, we have a number of apps installed.
+    For a particular app, we can add ‘extensions’ to increase its
+    capabilities. MCP is the protocol that enables discoverability and
+    implementation of 3rd party TOOLS for our app, (Agent), to use.</p>
+  <p>A2A is the protocol that enables discoverability and implementation
+    of 3rd party AGENTS for our app, (Agent), to use.</p>
+  <p>With this in mind, we can see a future where we will be using many
+    3rd party Tools and Agents as we might use APIs.</p>
   <p>Before we go into some code examples, we will refresh ourselves that
     a REST API a request is sending a payload of data to a server and then
     the server returns a response.</p>
@@ -435,6 +440,9 @@ payload = {
 }
 
 Low Temperature:
+
+https://medium.com/@jpraveenkanna/demystifying-llm-configurations-for-inference-3866979806de
+
 The bag is full of mostly blue marbles, with a few red and green. Low temperature means you&#39;re very likely to pull a blue marble, but you might occasionally get a red or green.
 
 High Temperature:
@@ -457,31 +465,6 @@ The bag is filled with a mix of colors, and all colors are equally likely. High 
     types.</p>
   <p>Likewise, we get a text response. We pass some text to a function and
     get some text back.</p>
-  <p>We will look at <code>01_openai_api_with_requests.ipynb</code> to see
-    an example of getting a response from the LLM.</p>
-  <p><code>01_openai_api_with_requests.ipynb</code>.</p>
-  <p>In <code>02_api.ipynb</code>, we can see that we can get a joke from
-    a regular API endpoint, with the assumption that there is no AI
-    involved!</p>
-  <p>We can also ask OpenAI to tell us a joke…</p>
-  <p>What if we want a more complex API endpoint/route?</p>
-  <p>Let’s say we want to get a joke, get a rating as well as a verdict on
-    whether it is worthy of publishing or whether a HUMAN should make the
-    joke for publishing.</p>
-  <p>We can do this by using a prompt.</p>
-  <p>The prompt is the input to the AI agent.</p>
-  <p>The prompt can be considered to be the API route we are creating and
-    it it will be in Natural Language.</p>
-  <p>Let’s look at this file <code>02_api.ipynb</code>…</p>
-  <p>We can see this in <code>02_api.ipynb</code> where we pass a system
-    prompt and then a prompt to create this endpoint, specifying how we want
-    the data returned.</p>
-  <p>This is effectively a new route for the API, but instead of it being
-    coded on the server side by someone, it is coded on the client side,
-    sent with the payload AND the code is NATURAL LANGUAGE.</p>
-  <p>In the early days of ChatGPT, <em>prompt engineering</em> was often
-    shownd as hacks or tricks. Nowdays, it seems far more structured and
-    different LLMs use different schemas.</p>
   <p>(Current models are ‘Imperative’ in that we say what they are, what
     they do, how they do it…New REASONING models are ‘Declarative’ in that
     we say what we want them to do - the goal - what we want as output and
@@ -491,29 +474,9 @@ The bag is filled with a mix of colors, and all colors are equally likely. High 
     developing an app.</p>
   <p>In fact, it is like a person starting a new job. They will get a
     handbook of what the job involves, how to do it etc. and this is what we
-    are doing with the LLM. <code>sample_prompt.md</code> is an example of
-    this and how we could import content from a Markdown file.</p>
-  <p>We set the system prompt to guide the AI agent, and then the prompt
-    to create the endpoint.</p>
-  <p>We can have more information than necessary and this can do no harm
-    provide it is consistent and logical with the remaining prompt.
-    Obviously, there will be more token usage but with the price going down,
-    it is not an issue.</p>
-  <p>We have covered 2/3 of the AI reverse process - Client Side creation
-    of the route and the use of Natural Language.</p>
-  <p>What about Autonomy?</p>
-  <p>In our output, we asked the LLM to give not just a rating but a
-    verdict on whether it is worthy of publishing or not. This is the
-    <code>next</code> parameter that is returned. This is our own creation
-    and we can have any key name.
-  </p>
-  <p>There are many software design patterns but essentially the next step
-    in the app has been selected by the LLM. It is the <code>if/else</code>
-    statement. or router.</p>
-  <p>In summary, this module has shown the 3 counter-intuitive steps of AI
-    Agents - Autonomy, Client Side Creation of the route and the use of
-    Natural Language.</p>
+    are doing with the LLM.</p>
   <p><img src="./101_ESSENCE.png" alt="ESSENCE" /></p>
+  <p>Let’s go to the notebooks and see some code examples.</p>
   <h1 id="4-main-patterns">4 main patterns</h1>
   <p>Andrew Ng describes four main patterns</p>
   <p><a
