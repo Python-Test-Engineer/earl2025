@@ -1,4 +1,4 @@
-**Analysis of Feature Importance Chart**
+**Analysis of the Feature Importance Chart**
 
 ### 1. Top 3 Most Important Features
 
@@ -10,13 +10,13 @@ The top 3 most important features, based on their mean SHAP values (average impa
 
 ### 2. Type of Model or Analysis
 
-This feature importance chart appears to be from a **SHAP (SHapley Additive exPlanations)** analysis, which is a technique used to explain the output of machine learning models. SHAP values represent the contribution of each feature to the predicted outcome.
+This feature importance chart appears to be from a **SHAP (SHapley Additive exPlanations)** analysis, which is a technique used to explain the output of machine learning models. SHAP values help to understand how each feature contributes to the predicted outcome of a model.
 
 ### 3. Notable Patterns or Insights
 
-Some notable patterns and insights from the chart are:
+Some notable patterns and insights from the chart include:
 
-* **Budget and budget-related features are highly important**: The top three features include `budget` and `budget_per_minute`, indicating that the model's predictions are heavily influenced by the budget of the movie.
-* **Popularity and vote average are also important**: The presence of `popularity` and `vote_average` in the top 5 features suggests that the model's predictions are also influenced by the movie's popularity and its critical reception.
-* **Transformed features have lower importance**: The features with "_transformed" in their names (e.g., `budget_transformed`, `popularity_transformed`) have relatively lower importance, suggesting that the transformations may not have added significant value to the model's predictions.
-* **Diverse set of features**: The chart includes a diverse set of features, such as movie metadata (e.g., `title_length`, `rel_year`), cast and crew characteristics (e.g., `cast_size`, `crew_size`), and production company information (e.g., `production_company_tr`). This suggests that the model is using a wide range of factors to make predictions.
+* **Budget and financial features are highly important**: The top three features are all related to budget or financial aspects of a movie (budget, popularity, and budget_per_minute). This suggests that the model places significant emphasis on the financial aspects of a movie when making predictions.
+* **Transformed features have lower importance**: The features with "_transformed" in their names (e.g., budget_transformed, director_tr_transformed) have relatively lower importance compared to their original counterparts. This may indicate that the transformations did not add significant value to the model.
+* **Diverse set of features**: The chart includes a diverse set of features, such as production company, crew size, cast size, and vote average. This suggests that the model is considering a wide range of factors when making predictions.
+* **Long tail of low-importance features**: There is a long tail of features with relatively low importance values (e.g., cast_crew_ratio, popularity_transformed). This may indicate that some features have limited impact on the model's predictions.
