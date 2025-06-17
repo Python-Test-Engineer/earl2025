@@ -15,6 +15,11 @@ Think HTTP protocol for example.
 
 Thus in time, our apps may well be a collection of AI Agents that use 3rd party tools that are speicalist and highly developed, in the same way we use deterministically, Numpy, Pandas etc.
 
+
+I got this from [mcp.so](https://mcp.so/server/duckdb-mcp-server/mustafahasankhan)
+
+<img src="./images/mcp.so.png">
+
 https://github.com/mustafahasankhan/duckdb-mcp-server
 
 
@@ -35,6 +40,12 @@ We load this config in the appropriate place for your host:
 ```
 
 <img src="./images/mcp-server-setup.png">
+
+This enables the app to spin up the server locally in a separate process, run the tool and then shut down.
+
+There is MCP Client code that the app includes to do this.
+
+With modern abtractions, it is just a few lines of code.
 
 Your AI Agent knows about this MCP Server, it can get a list of tools and as we saw in the ROUTER example, it can decide which tool to use as well as how to use.
 
