@@ -189,7 +189,15 @@ def loop(max_iterations=10, prompt: str = ""):
 
 
 # Let's run it...
+info = """
+We have two tools available for your ACTIONS: 
 
+**get_product_price** - retrieves the price of a product
+**calculate_total** - adds 20% of VAT
+
+total price of an item will be requested by the user.
+"""
+console.print(f"[green]{info}[/]")
 question = "What is cost of a laptop including VAT?"
 console.print(f"\nQuestion is: [cyan italic]{question}\n[/]")  # end of loop
 
