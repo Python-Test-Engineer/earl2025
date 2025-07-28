@@ -5,10 +5,15 @@ from langchain.agents.agent_types import AgentType
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_openai import ChatOpenAI
 import os
+from dotenv import load_dotenv, find_dotenv
 
+load_dotenv(find_dotenv(), override=True)
 # Set your OpenAI API key
 # os.environ["OPENAI_API_KEY"] = "your-api-key-here"
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY is not set")
 
 def main():
     # Load and prepare the DataFrame
