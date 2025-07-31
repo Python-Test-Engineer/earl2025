@@ -1,4 +1,4 @@
-# PyData Southampton - Craig West
+# EARL 2025 - Craig West
 
 ## AI Agents in the Data Pipeline
 
