@@ -1,0 +1,19 @@
+The following is the headers and first 5 rows of the 'Did not attend' Kaggle dataset:
+
+PatientId	AppointmentID	Gender	ScheduledDay	AppointmentDay	Age	Neighbourhood	Scholarship	Hipertension	Diabetes	Alcoholism	Handcap	SMS_received	No-show
+2.98725E+13	5642903	F	2016-04-29T18:38:08Z	2016-04-29T00:00:00Z	62	JARDIM DA PENHA	0	1	0	0	0	0	No
+5.58998E+14	5642503	M	2016-04-29T16:08:27Z	2016-04-29T00:00:00Z	56	JARDIM DA PENHA	0	0	0	0	0	0	No
+4.26296E+12	5642549	F	2016-04-29T16:19:04Z	2016-04-29T00:00:00Z	62	MATA DA PRAIA	0	0	0	0	0	0	No
+8.67951E+11	5642828	F	2016-04-29T17:29:31Z	2016-04-29T00:00:00Z	8	PONTAL DE CAMBURI	0	0	0	0	0	0	No
+8.84119E+12	5642494	F	2016-04-29T16:07:23Z	2016-04-29T00:00:00Z	56	JARDIM DA PENHA	0	1	1	0	0	0	No
+
+Write the code for a complete data pipeline:
+
+- Ingestion
+- Data Cleaning
+- ETL
+- - Analysis with charts and graphs
+- If possible SHAP analysis
+- Summary Analysis of the dataset located in the root of this project as  `dna.csv`
+- Report of what you have done
+- Recommendations for further analysis using appropirate ML models.
