@@ -27,6 +27,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.tools import tool
 from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv, find_dotenv
+
 load_dotenv(find_dotenv())
 warnings.filterwarnings("ignore")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
@@ -547,7 +548,8 @@ def create_reporting_agent():
         state["messages"].append(
             AIMessage(content="📋 Comprehensive report generated with visualizations")
         )
-
+        with open("ai_agents_pipeline_report.txt", "w") as f:
+            f.write(report_summary)
         return state
 
     return agent_node
@@ -672,19 +674,17 @@ def main():
             "\n📋 Check 'ai_agents_pipeline_report.png' for the generated visualization!"
         )
 
-  
         # Get the Mermaid representation
         mermaid_png = app.get_graph().draw_mermaid_png()
-        
+
         # Save to file
         with open("langgraph.png", "wb") as f:
             f.write(mermaid_png)
-        
+
         print("📊 Workflow diagram saved as 'langgraph.png'")
 
-
     except Exception as e:
-       
+
         print(f"\n❌ Pipeline Error: {str(e)}")
         print("💡 Make sure you have set OPENAI_API_KEY environment variable")
         print(
