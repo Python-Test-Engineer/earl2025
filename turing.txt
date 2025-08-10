@@ -12,7 +12,7 @@ Write the code for a complete data pipeline:
 - Ingestion
 - Data Cleaning
 - ETL
-- - Analysis with charts and graphs
+- Analysis with charts and graphs
 - If possible SHAP analysis
 - Summary Analysis of the dataset located in the root of this project as  `dna.csv`
 - Report of what you have done
