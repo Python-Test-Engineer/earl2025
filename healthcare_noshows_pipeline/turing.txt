@@ -14,6 +14,11 @@ Write the code for a complete data pipeline:
 - ETL
 - Analysis with charts and graphs
 - If possible SHAP analysis
-- Summary Analysis of the dataset located in the root of this project as  `dna.csv`
 - Report of what you have done
 - Recommendations for further analysis using appropirate ML models.
+
+**Do not use the dna.csv file just the sample rows above**
+
+Create a final python module to run the code on the complete dataset and run it locally too.
+
+**DO NOT SEND dna.csv to LLM**
