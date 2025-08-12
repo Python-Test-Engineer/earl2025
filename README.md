@@ -17,7 +17,7 @@ Free Tier with Groq: https://console.groq.com/login
 
 ## Set Up
 
-Create a virtual environment and install requirements:
+Install requirements using either `pip install -r requirements.txt` or `uv sync`
 
 To run LLMs, copy .env.sample to .env and add your OpenAI key or Groq API key:
 
