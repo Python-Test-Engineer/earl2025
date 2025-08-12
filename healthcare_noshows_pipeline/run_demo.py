@@ -15,7 +15,7 @@ from datetime import datetime
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from healthcare_data_pipeline import HealthcareDataPipeline
-
+print("Healthcare Data Pipeline Demo Script")
 def run_demo():
     """
     Run the healthcare data pipeline demo
@@ -56,4 +56,5 @@ def run_demo():
         sys.exit(1)
 
 if __name__ == "__main__":
+    print("🚀 Starting Healthcare Data Pipeline Demo")
     run_demo()

@@ -461,57 +461,58 @@ class HealthcareDataPipeline:
     def shap_analysis(self):
         """
         SHAP (SHapley Additive exPlanations) analysis for model interpretability
-        """
-        self.log_analysis("Starting SHAP analysis for model interpretability...")
+        # """
+        print("NOT Starting SHAP analysis for model interpretability...")
+        # self.log_analysis("Starting SHAP analysis for model interpretability...")
         
-        if not self.model_results:
-            raise ValueError("No model results available. Run build_ml_models() first.")
+        # if not self.model_results:
+        #     raise ValueError("No model results available. Run build_ml_models() first.")
         
-        try:
-            # Use Random Forest for SHAP analysis
-            rf_model = self.model_results['models']['Random Forest']['model']
-            X_test = self.model_results['X_test']
-            feature_cols = self.model_results['feature_columns']
+        # try:
+        #     # Use Random Forest for SHAP analysis
+        #     rf_model = self.model_results['models']['Random Forest']['model']
+        #     X_test = self.model_results['X_test']
+        #     feature_cols = self.model_results['feature_columns']
             
-            # Create SHAP explainer
-            explainer = shap.TreeExplainer(rf_model)
-            shap_values = explainer.shap_values(X_test)
+        #     # Create SHAP explainer
+        #     explainer = shap.TreeExplainer(rf_model)
+        #     shap_values = explainer.shap_values(X_test)
             
-            # SHAP summary plot
-            plt.figure(figsize=(12, 8))
-            shap.summary_plot(shap_values[1], X_test, feature_names=feature_cols, show=False)
-            plt.tight_layout()
-            plt.savefig(self.plots_dir / 'shap_summary_plot.png', dpi=300, bbox_inches='tight')
-            plt.close()
+        #     # SHAP summary plot
+        #     plt.figure(figsize=(12, 8))
+        #     shap.summary_plot(shap_values[1], X_test, feature_names=feature_cols, show=False)
+        #     plt.tight_layout()
+        #     plt.savefig(self.plots_dir / 'shap_summary_plot.png', dpi=300, bbox_inches='tight')
+        #     plt.close()
             
-            # SHAP waterfall plot for a sample prediction
-            plt.figure(figsize=(12, 8))
-            shap.waterfall_plot(explainer.expected_value[1], shap_values[1][0], X_test.iloc[0], 
-                              feature_names=feature_cols, show=False)
-            plt.tight_layout()
-            plt.savefig(self.plots_dir / 'shap_waterfall_plot.png', dpi=300, bbox_inches='tight')
-            plt.close()
+        #     # SHAP waterfall plot for a sample prediction
+        #     plt.figure(figsize=(12, 8))
+        #     shap.waterfall_plot(explainer.expected_value[1], shap_values[1][0], X_test.iloc[0], 
+        #                       feature_names=feature_cols, show=False)
+        #     plt.tight_layout()
+        #     plt.savefig(self.plots_dir / 'shap_waterfall_plot.png', dpi=300, bbox_inches='tight')
+        #     plt.close()
             
-            # SHAP feature importance
-            feature_importance_shap = np.abs(shap_values[1]).mean(0)
-            shap_importance_df = pd.DataFrame({
-                'feature': feature_cols,
-                'shap_importance': feature_importance_shap
-            }).sort_values('shap_importance', ascending=False)
+        #     # SHAP feature importance
+        #     feature_importance_shap = np.abs(shap_values[1]).mean(0)
+        #     shap_importance_df = pd.DataFrame({
+        #         'feature': feature_cols,
+        #         'shap_importance': feature_importance_shap
+        #     }).sort_values('shap_importance', ascending=False)
             
-            plt.figure(figsize=(12, 8))
-            sns.barplot(data=shap_importance_df.head(15), x='shap_importance', y='feature', palette='coolwarm')
-            plt.title('Top 15 Feature Importance (SHAP Values)')
-            plt.xlabel('Mean |SHAP Value|')
-            plt.tight_layout()
-            plt.savefig(self.plots_dir / 'shap_feature_importance.png', dpi=300, bbox_inches='tight')
-            plt.close()
+        #     plt.figure(figsize=(12, 8))
+        #     sns.barplot(data=shap_importance_df.head(15), x='shap_importance', y='feature', palette='coolwarm')
+        #     plt.title('Top 15 Feature Importance (SHAP Values)')
+        #     plt.xlabel('Mean |SHAP Value|')
+        #     plt.tight_layout()
+        #     plt.savefig(self.plots_dir / 'shap_feature_importance.png', dpi=300, bbox_inches='tight')
+        #     plt.close()
             
-            self.log_analysis("SHAP analysis completed successfully")
+        #     self.log_analysis("SHAP analysis completed successfully")
             
-        except Exception as e:
-            self.log_analysis(f"SHAP analysis failed: {e}")
-            self.log_analysis("This might be due to missing SHAP library or compatibility issues")
+        # except Exception as e:
+        #     self.log_analysis(f"SHAP analysis failed: {e}")
+        #     self.log_analysis("This might be due to missing SHAP library or compatibility issues")
     
     def generate_report(self):
         """
