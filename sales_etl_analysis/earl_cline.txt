@@ -10,4 +10,6 @@ sales_data = [
     ['2024-01-19', 'Headphones', 4, 149.99, 599.96]
 ]
 
-I have a CSV for some sales data. Make a simple ETL and data analysis programme for it to show plots and graphs $0.75
+I have a CSV for some sales data. Make a simple ETL and data analysis programme for it to show plots and graphs
+
+COST: $0.75
