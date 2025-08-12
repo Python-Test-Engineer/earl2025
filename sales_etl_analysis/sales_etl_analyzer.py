@@ -551,7 +551,7 @@ def main():
     analyzer = SalesETLAnalyzer()
 
     # Check if sample data exists
-    sample_file = "sample_sales_data.csv"
+    sample_file = "./sales_etl_analysis/sample_sales_data.csv"
     if os.path.exists(sample_file):
         print(f"📁 Found sample data file: {sample_file}")
 

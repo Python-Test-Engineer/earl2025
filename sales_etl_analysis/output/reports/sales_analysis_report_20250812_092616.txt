@@ -1,0 +1,55 @@
+================================================================================
+SALES DATA ANALYSIS REPORT
+================================================================================
+Generated on: 2025-08-12 09:26:16
+Data source: sample_sales_data.csv
+================================================================================
+
+BASIC STATISTICS
+----------------------------------------
+Total Records: 40
+Date Range: 2024-01-15 to 2024-02-03
+Total Revenue: $20,087.47
+Average Order Value: $502.19
+Total Quantity Sold: 253
+
+SALES BY CATEGORY
+----------------------------------------
+                  sum    mean  count
+category                            
+Electronics  13969.17  735.22     19
+Furniture     4574.75  415.89     11
+Stationery    1543.55  154.35     10
+
+SALES BY REGION
+----------------------------------------
+            sum    mean  count
+region                        
+East    6944.66  694.47     10
+North   5699.47  569.95     10
+South   3454.44  345.44     10
+West    3988.90  398.89     10
+
+SALES BY REPRESENTATIVE
+----------------------------------------
+                   sum    mean  count
+sales_rep                            
+John Smith     6759.49  675.95     10
+Lisa Wilson    2928.88  292.89     10
+Mike Davis     6944.66  694.47     10
+Sarah Johnson  3454.44  345.44     10
+
+TOP 10 PRODUCTS
+----------------------------------------
+product_name
+Laptop Pro 15          9099.93
+Standing Desk          1799.97
+Office Chair           1499.94
+Projector Portable      799.99
+Wireless Mouse          749.75
+Headphones Wireless     599.97
+Conference Phone        449.99
+Keyboard Mechanical     449.97
+Desk Lamp               399.95
+Webcam HD               359.96
+
