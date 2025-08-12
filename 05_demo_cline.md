@@ -1,6 +1,11 @@
+# Cline Demo
+
+![cline](./sales_etl_analysis/screenshot-cline.png)
+
+
 CLAUDE: 
 
-create s simple sales csv with just 5 rows
+create a simple sales csv with just 5 rows
 
 sales_data = [
     ['Date', 'Product', 'Quantity', 'Unit_Price', 'Total'],
@@ -15,6 +20,8 @@ CLINE:
 
 I have a CSV for some sales data. Make a simple ETL and data analysis programme for it to show plots and graphs. 
 
-[There is a folder already called `sales_etl_analysis` - please ignore and start afresh]
+(There is a folder already called `sales_etl_analysis` - please ignore and start afresh)
 
-COST: It cost $0.75 and output is in repo `sales_etl_analysis` along with `healthcare_noshows_pipeline'
+COST: 
+
+It cost $0.75 and output is in repo `sales_etl_analysis` along with `healthcare_noshows_pipeline'
