@@ -2,6 +2,8 @@
 
 ## AI Agents in the Data Pipeline
 
+![card](./earl-2025-card.png)
+
 
 Code examples will be able to use either Groq or OpenAI except a few which are for demo purposes only.
 
@@ -34,4 +36,3 @@ Here is a link to the repo for:
 
 ## [https://github.com/Python-Test-Engineer/pydata-southampton](https://github.com/Python-Test-Engineer/pydata-southampton)
 
-![PyData Southampton](./images/craig-west-pydata-southampton.png)
