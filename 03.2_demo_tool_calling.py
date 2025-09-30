@@ -1,6 +1,6 @@
 import os
 from openai import OpenAI
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from rich.console import Console
 
 console = Console()
@@ -8,7 +8,7 @@ console = Console()
 
 # Load environment variables in a file called .env
 # Print the key prefixes to help with any debugging
-load_dotenv()
+load_dotenv(find_dotenv(), override=True)
 
 
 def get_llm_client(llm_choice):

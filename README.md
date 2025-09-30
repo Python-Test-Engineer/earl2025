@@ -2,12 +2,9 @@
 
 ## AI Agents in the Data Pipeline
 
-<<<<<<< HEAD
 ![card](./earl-2025-card.png)
 
 
-=======
->>>>>>> d45aeeb06b311e09a7cb2b1c0d0c368588f0c98d
 Code examples will be able to use either Groq or OpenAI except a few which are for demo purposes only.
 
 You will need an LLM API key.
