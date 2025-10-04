@@ -21,6 +21,7 @@ headers = {
     "Authorization": f"Bearer {OPENAI_API_KEY}",
 }
 # payload structure may vary from LLM Organisation but it is a text string.
+# OpeAI trained models on the messages structure for chat models
 payload = {
     "model": MODEL,
     "messages": [
