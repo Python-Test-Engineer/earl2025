@@ -35,6 +35,8 @@ It cost $0.75 and output is in repo `sales_etl_analysis` along with `healthcare_
 
 ![screenshot](./images/premade_cline_demos.png)
 
+# Business Intelligence
+
 in sales_etl_analysis/output/plots there are images created for the sales data
 
 Analyse thes images for business intenllignec and create a rpeort called_bI_analysis.md
