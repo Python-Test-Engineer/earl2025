@@ -52,7 +52,7 @@ else:
 print(f"LLM_CHOICE: {LLM_CHOICE} - MODEL: {MODEL}")
 # See card in ipynb version...
 
-
+# THIS IS A TOOL FUNCTION
 def get_product_price(product):
     if product == "bike":
         return 100
@@ -62,7 +62,7 @@ def get_product_price(product):
         return 300
     return None
 
-
+# THIS IS A TOOL FUNCTION
 def calculate_total(amount):
     amount = int(amount)
     return int(amount * 1.2)
