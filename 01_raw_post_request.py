@@ -9,7 +9,10 @@ console = Console()
 load_dotenv(find_dotenv(), override=True)  # read local .env file
 # get API key from .env file
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-system_prompt = "You are a helpgul assistant."
+
+# PROMPTS
+
+system_prompt = "You are a helpfgul assistant."
 user_prompt = "Tell me about Brighton in 100 words or so."
 
 
@@ -29,6 +32,7 @@ payload = {
         {"role": "user", "content": user_prompt},
     ],
 }
+# API REQUEST
 # Use HTTP POST method - a web form in essence
 response = requests.post(
     url=model_endpoint,  # The endpoint we are sending the request to.
