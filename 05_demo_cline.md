@@ -31,3 +31,5 @@ sales_data = [
 COST: 
 
 It cost $0.75 and output is in repo `sales_etl_analysis` along with `healthcare_noshows_pipeline'
+
+![screenshot](./images/premade_cline_demos.png)
