@@ -18,7 +18,8 @@ sales_data = [
 
 CLINE:
 
-“I have a CSV for some sales data. Make a simple ETL and data analysis programme for it to show plots and graphs. There is already a folder called `sales_etl_analysis` - please use `earl_demo` as folder name”
+I have a CSV for some sales data. Make a simple ETL and data analysis programme for it to show plots and graphs. There is already a folder called `sales_etl_analysis` - please use `earl_demo` as folder name
+
 sales_data = [
     ['Date', 'Product', 'Quantity', 'Unit_Price', 'Total'],
     ['2024-01-15', 'Laptop', 2, 999.99, 1999.98],
@@ -33,3 +34,7 @@ COST:
 It cost $0.75 and output is in repo `sales_etl_analysis` along with `healthcare_noshows_pipeline'
 
 ![screenshot](./images/premade_cline_demos.png)
+
+in sales_etl_analysis/output/plots there are images created for the sales data
+
+Analyse thes images for business intenllignec and create a rpeort called_bI_analysis.md
