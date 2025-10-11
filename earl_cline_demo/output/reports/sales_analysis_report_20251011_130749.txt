@@ -1,0 +1,62 @@
+SALES DATA ANALYSIS REPORT
+==================================================
+
+Generated on: 2025-10-11 13:07:49
+
+EXECUTIVE SUMMARY
+--------------------
+Total Records Analyzed: 5
+Total Revenue: $3,289.85
+Total Units Sold: 15
+Average Order Value: $657.97
+Date Range: 2024-01-15 to 2024-01-19
+
+PRODUCT PERFORMANCE ANALYSIS
+------------------------------
+
+Headphones:
+  Total Sales: $599.96
+  Average Sale: $599.96
+  Units Sold: 4
+  Unit Price: $149.99
+
+Keyboard:
+  Total Sales: $239.97
+  Average Sale: $239.97
+  Units Sold: 3
+  Unit Price: $79.99
+
+Laptop:
+  Total Sales: $1,999.98
+  Average Sale: $1,999.98
+  Units Sold: 2
+  Unit Price: $999.99
+
+Monitor:
+  Total Sales: $299.99
+  Average Sale: $299.99
+  Units Sold: 1
+  Unit Price: $299.99
+
+Mouse:
+  Total Sales: $149.95
+  Average Sale: $149.95
+  Units Sold: 5
+  Unit Price: $29.99
+
+
+CATEGORY ANALYSIS
+--------------------
+Accessories: $389.92 (8 units)
+Electronics: $599.96 (4 units)
+Hardware_Large: $2,299.97 (3 units)
+
+
+KEY INSIGHTS & RECOMMENDATIONS
+-----------------------------------
+1. Top Performer: Laptop generated $1,999.98 in revenue
+2. Premium Product: Laptop has the highest unit price
+3. Volume Leader: Mouse sold 5 units
+
+4. Sales are concentrated in 5 products over 5 days
+5. Average daily revenue: $657.97

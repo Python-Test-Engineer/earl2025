@@ -15,7 +15,7 @@ sales_data = [
 
 ## CLINE:
 
-I have a CSV for some sales data. Make a simple ETL and data analysis programme for it to show plots and graphs. Create a folder earl2025 for this and store all files in this folder.
+I have a CSV for some sales data. Make a simple ETL and data analysis programme for it to show plots and graphs. Create a folder earl_cline_demo for this and store all files in this folder.
 
 sales_data = [
     ['Date', 'Product', 'Quantity', 'Unit_Price', 'Total'],
@@ -29,6 +29,6 @@ sales_data = [
 
 ## Business Intelligence
 
-in earl2025/output/plots there are images created for the sales data
+in earl_cline_demo/output/plots there are images created for the sales data
 
 Analyse thes images for business intenllignec and create a report called `Business_Intelligence_Analysis.md` and store in the outputs folder.
