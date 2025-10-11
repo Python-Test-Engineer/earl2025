@@ -1,11 +1,8 @@
 # Cline Demo
 
-![cline](./sales_etl_analysis/screenshot-cline.png)
+## CLAUDE: 
 
-
-CLAUDE: 
-
-create a simple sales csv with just 5 rows
+I created a simple sales csv with just 5 rows in Claude.ai
 
 sales_data = [
     ['Date', 'Product', 'Quantity', 'Unit_Price', 'Total'],
@@ -16,9 +13,9 @@ sales_data = [
     ['2024-01-19', 'Headphones', 4, 149.99, 599.96]
 ]
 
-CLINE:
+## CLINE:
 
-I have a CSV for some sales data. Make a simple ETL and data analysis programme for it to show plots and graphs. There is already a folder called `sales_etl_analysis` - please use `earl_demo` as folder name
+I have a CSV for some sales data. Make a simple ETL and data analysis programme for it to show plots and graphs. Create a folder earl2025 for this and store all files in this folder.
 
 sales_data = [
     ['Date', 'Product', 'Quantity', 'Unit_Price', 'Total'],
@@ -29,14 +26,9 @@ sales_data = [
     ['2024-01-19', 'Headphones', 4, 149.99, 599.96]
 ]
 
-COST: 
 
-It cost $0.75 and output is in repo `sales_etl_analysis` along with `healthcare_noshows_pipeline'
+## Business Intelligence
 
-![screenshot](./images/premade_cline_demos.png)
+in earl2025/output/plots there are images created for the sales data
 
-# Business Intelligence
-
-in sales_etl_analysis/output/plots there are images created for the sales data
-
-Analyse thes images for business intenllignec and create a rpeort called_bI_analysis.md
+Analyse thes images for business intenllignec and create a report called `Business_Intelligence_Analysis.md` and store in the outputs folder.
