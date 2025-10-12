@@ -1,0 +1,6 @@
+Date,Product,Quantity,Unit_Price,Total,Year,Month,Day,Weekday,Revenue_per_Unit,Category,Estimated_Profit,Sale_Size
+2024-01-15,Laptop,2,999.99,1999.98,2024,1,15,Monday,999.99,Computers,599.994,Extra Large
+2024-01-16,Mouse,5,29.99,149.95,2024,1,16,Tuesday,29.99,Peripherals,44.98499999999999,Small
+2024-01-17,Keyboard,3,79.99,239.97,2024,1,17,Wednesday,79.99,Peripherals,71.991,Medium
+2024-01-18,Monitor,1,299.99,299.99,2024,1,18,Thursday,299.99,Displays,89.997,Medium
+2024-01-19,Headphones,4,149.99,599.96,2024,1,19,Friday,149.99,Audio,179.988,Large

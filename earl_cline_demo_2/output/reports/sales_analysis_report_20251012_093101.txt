@@ -1,0 +1,34 @@
+============================================================
+SALES DATA ANALYSIS REPORT
+============================================================
+Generated on: 2025-10-12 09:31:01
+
+EXECUTIVE SUMMARY
+--------------------
+Total Revenue: $3,289.85
+Total Units Sold: 15
+Average Sale Value: $657.97
+Number of Products: 5
+Analysis Period: 2024-01-15 to 2024-01-19
+
+PRODUCT PERFORMANCE
+--------------------
+1. Laptop: $1,999.98
+2. Headphones: $599.96
+3. Monitor: $299.99
+4. Keyboard: $239.97
+5. Mouse: $149.95
+
+CATEGORY ANALYSIS
+--------------------
+Computers: $1,999.98 (60.8%)
+Audio: $599.96 (18.2%)
+Peripherals: $389.92 (11.9%)
+Displays: $299.99 (9.1%)
+
+KEY INSIGHTS
+--------------------
+• Highest Single Sale: Laptop ($1,999.98)
+• Highest Unit Price: Laptop ($999.99)
+• Most Popular Category: Computers
+• Average Profit Margin: 30.0%

@@ -15,7 +15,9 @@ sales_data = [
 
 ## CLINE:
 
-I have a CSV for some sales data. Make a simple ETL and data analysis programme for it to show plots and graphs. Create a folder earl_cline_demo for this and store all files in this folder.
+I have some sample rows of CSV data. Make a simple ETL and data analysis programme for it to show plots and graphs. Create a folder earl_cline_demo_2 for this and store all files in this folder.
+
+**Graphs and chart images will be saved in the folder `earl_cline_demo/output/plots` as individual images not combined**
 
 sales_data = [
     ['Date', 'Product', 'Quantity', 'Unit_Price', 'Total'],
@@ -29,6 +31,8 @@ sales_data = [
 
 ## Business Intelligence
 
-in earl_cline_demo/output/plots there are images created for the sales data
+In earl_cline_demo_2/output/plots there are images of charts and graphs created for the sales data
 
-Analyse thes images for business intenllignec and create a report called `Business_Intelligence_Analysis.md` and store in the outputs folder.
+Analyse these images for business intelligence and create a report called `Business_Intelligence_Analysis.md` and store in the outputs folder. 
+
+**Do NOT make up any aspects. If you do not have any insightsfor a chart or graph, then write `No insights found for this chart or graph.`**
